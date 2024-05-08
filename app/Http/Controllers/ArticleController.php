@@ -106,7 +106,7 @@ class ArticleController extends Controller
             // Elimina un Articolo dell'utente loggato
             public function destroy(Article $article)
             {
-                 $article = Article::findOrFail($article->id);
+                $article = Article::findOrFail($article->id);
                 // Verifica che l'utente loggato sia l'autore dell'articolo
                 if ($article->author === auth()->id()) {
                     $article->delete();

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1>Questo è il show.blade.php del profilo</h1>
+    <h1>Questo è il index.blade.php del profilo</h1>
 
     <div class="container col-12 col-md-4 mt-5">
 

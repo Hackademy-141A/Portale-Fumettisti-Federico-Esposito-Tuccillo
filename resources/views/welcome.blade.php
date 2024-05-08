@@ -1,6 +1,6 @@
 <x-layout>
 <body>
-    <header class="bg-dark text-white py-4">
+    <header class=" text-white py-4">
         <div class="container">
             <h1 class="display-4">Benvenuto Fumettista</h1>
             <p class="lead">Esplora il mondo dei fumetti e porta la tua creatività al livello successivo!</p>

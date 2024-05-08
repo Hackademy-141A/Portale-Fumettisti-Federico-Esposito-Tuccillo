@@ -23,7 +23,7 @@ Route::prefix('article')->group(function(){
     Route::post('/store', [ArticleController::class, 'store'])->name('article.store'); // Salva un nuovo articolo
     Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit'); // Mostra il modulo di modifica dell'articolo
     Route::put('/{article}/update', [ArticleController::class, 'update'])->name('article.update');// Aggiorna un articolo esistente
-    Route::get('/{id}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
+    Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
     Route::delete('/{article}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');// Elimina un articolo
     route::get('/{id}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
 });

@@ -18,8 +18,8 @@
                 
                 {{-- <p class="card-text">{{ $articles->article_description }}</p> --}}
                 
-                <a href="{{ route('article.show','id', $article->id) }}" class="btn btn-primary">Mostra Articolo</a>
-                <a href="{{route('article.edit','id', $article->id)}}" class="btn btn-primary">Modifica Il Tuo Articolo!</a>
+                <a href="{{ route('article.show', $article->id) }}" class="btn btn-primary">Mostra Articolo</a>
+                <a href="{{route('article.edit', $article->id)}}" class="btn btn-primary">Modifica Il Tuo Articolo!</a>
                 
             </div>
             

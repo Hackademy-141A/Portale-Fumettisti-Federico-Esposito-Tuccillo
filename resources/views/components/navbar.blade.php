@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bgcustm justify-content-space-center">
+<nav class="navbar bg-white py-3 navbar-expand-lg bgcustm justify-content-space-center">
     <div class="container-fluid">
         <a class="navbar-brand rainbow-text" href="{{ route('home') }}">Fumettisti Indie</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

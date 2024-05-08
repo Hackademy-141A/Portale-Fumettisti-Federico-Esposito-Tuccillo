@@ -37,6 +37,7 @@ class ProfileController extends Controller
             'phone' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:500',
+            'email' => 'nullable|string|email|max:30',
         ]);
         
         $profile->update([
@@ -44,6 +45,7 @@ class ProfileController extends Controller
             'phone' => $request->input('phone'),
             'company_address' => $request->input('company_address'),
             'short_description' => $request->input('short_description'),
+            'email' => $request->input('email'),
         ]);
         
         return redirect()->route('home')->with('success', 'Profilo aggiornato con successo!');
