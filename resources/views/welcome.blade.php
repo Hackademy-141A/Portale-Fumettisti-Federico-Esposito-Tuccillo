@@ -1,24 +1,25 @@
 <x-layout>
-<body>
-    <header class=" text-white py-4">
-        <div class="container">
-            <h1 class="display-4">Benvenuto Fumettista</h1>
-            <p class="lead">Esplora il mondo dei fumetti e porta la tua creatività al livello successivo!</p>
-        </div>
-    </header>
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Crea il tuo mondo</h2>
-                        <p class="card-text">Condividi le tue storie e disegni con una community appassionata di fumetti.</p>
-                        <a href="#" class="btn btn-primary">Inizia ora</a>
-                    </div>
+    <body class="body-welcome">
+        <header class="text-center text-white py-4">
+            <div class="container">
+                <h1 class="display-5">Benvenuto Fumettista</h1>
+                <p class="lead">Esplora il mondo dei fumetti e porta la tua creatività al livello successivo!</p>
+            </div>
+        </header>
+        
+        
+        <section class="text-center container">
+            <div class="row py-lg-1">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Scrivi un Fumetto</h1>
+                    <p class="lead">Inserisci il tuo Fumetto</p>
+                    <a href="{{ route('article.create') }}" class="btn btn-primary my-2">Aggiungi Fumetto</a>
+                    <a href="{{ route('article.index', 'article') }}" class="btn btn-secondary my-2">Vedi Fumetti</a>
+                    <p class="lead">Oppure fai una ricerca</p>
+                    <a href="{{ route('article.index', 'article') }}" class="btn btn-secondary my-2">Ricerca Fumetti</a>
                 </div>
             </div>
-        </div>
-    </div>
-</body>
+            
+        </section>
+    </body>
 </x-layout>

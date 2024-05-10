@@ -25,7 +25,7 @@ Route::prefix('article')->group(function(){
     Route::put('/{article}/update', [ArticleController::class, 'update'])->name('article.update');// Aggiorna un articolo esistente
     Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
     Route::delete('/{article}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');// Elimina un articolo
-    route::get('/{id}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
+    route::get('/{article}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
 });
 
 

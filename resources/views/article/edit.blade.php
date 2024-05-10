@@ -1,6 +1,6 @@
 <x-layout>
     @auth
-    <div class="card">
+    <div class="card container-fluid d-flex col-12 col-md-4 mt-5">
         <div class="card-header">
             Modifica il tuo Fumetto
         </div>
@@ -9,8 +9,8 @@
             
             
             <form action="{{ route('article.update',compact('article')) }}" method="POST" enctype="multipart/form-data">
-               {{-- @dd($article); --}}
-                    
+                {{-- @dd($article); --}}
+                
                 
                 @csrf
                 @method('PUT')

@@ -15,17 +15,8 @@
     {{--? Footer Sticky Bottom delle pagine.  --}}
 
 
-<footer class="footer fixed-bottom bg-light py-5">
-    <div class="container text-center">
-        <ul class="list-unstyled">
-            <li>
-                <a href="">Test</a>
-                <a href="">Test</a>
-                <a href="">Test</a>
-            </li>
-        </ul>
-    </div>
-</footer>
+    <x-footer /> 
+
 
 </body>
 </html>
