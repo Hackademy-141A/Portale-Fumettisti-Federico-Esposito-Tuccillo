@@ -1,4 +1,11 @@
 <x-layout>
+    <style>
+        body{
+            background-image: url('{{ asset('images/test11.jpg') }}');'
+            background-position: center;
+            background-size: fit;
+        }
+    </style>
     <body class="body-welcome">
         <header class="text-center text-white py-4">
             <div class="container">

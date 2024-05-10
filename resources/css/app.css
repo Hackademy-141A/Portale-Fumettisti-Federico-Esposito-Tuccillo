@@ -1,5 +1,10 @@
 @import 'bootstrap';
 
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+
 body{
     padding: 70px;
 }
@@ -75,7 +80,10 @@ body{
 /* ORA AGGIUNGIAMO STILE AL FOOTER */
 
 footer{
+    
+    font-size: small;
+    color: white!important;
     background-color: #262626;
-    margin-top: -6cm!important;
-    margin-bottom: -0.3cm;
+    margin-top: -7cm!important;
+    margin-bottom: -0.5cm;
 }
