@@ -15,7 +15,7 @@
     {{--? Footer Sticky Bottom delle pagine.  --}}
 
 
-    <x-footer /> 
+    {{-- <x-footer />  --}}
 
 
 </body>

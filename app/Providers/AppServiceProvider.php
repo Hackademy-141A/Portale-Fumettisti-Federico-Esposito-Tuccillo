@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //ora facciamo in modo che i record salvati nella tabella categories siano a disposizone di tutte le viste del progetto
+        if (Schema::hasTable('categories')) {
+            $categories = Category::all();
+            View::share('categories', $categories);
+        };
+        //Adesso è stata fatta la registrazione di una view globale, quindi è possibile utilizzarla in qualsiasi view del progetto
+        
     }
 }

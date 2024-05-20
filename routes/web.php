@@ -26,6 +26,8 @@ Route::prefix('article')->group(function(){
     Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
     Route::delete('/{article}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');// Elimina un articolo
     route::get('/{article}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
+
+    Route::get('/by-user/{user}', [ArticleController::class, 'byUser'])->name('article.byUser'); // Mostra gli articoli di un utente specifico
 });
 
 
@@ -37,3 +39,8 @@ Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('prof
 Route::put('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update'); // Aggiorna un profilo esistente
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store'); // Salva un nuovo profilo
 Route::get('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Elimina un profilo
+
+
+
+//Rotta kitammuort
+

@@ -17,9 +17,13 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('subtitle');
             $table->text('article_description');
-            $table->unsignedBigInteger('author_id');
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->timestamps();
+
         });
     }
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticleStoreRequet;
 
 class ArticleController extends Controller
 {
@@ -17,16 +20,19 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::all();
+        // Carica gli articoli con la relazione 'author'
+        // $articles = Article::with('author')->get();
+        return view('article.index', compact( 'articles'));
         // Ottieni solo gli articoli dell'utente attualmente autenticato
-        return view('article.index', ['articles' => $articles]);
-        
     }
+    //  ['articles' => $articles]);
     
     // Mostra il singolo Articolo dell'utente loggato
     public function show(Article $article)
     {
         $article = Article::findOrFail($article->id);
         return view('article.show', ['article' => $article]);
+        
     }
     
     // Mostra la pagina di creazione di un nuovo Articolo
@@ -61,7 +67,7 @@ class ArticleController extends Controller
     }
     
     //! Salva un nuovo Articolo
-    //?Vecchia versione store
+    //?Vecchia versione store 1.0
     // public function store(Request $request)
     // {
         //     $request->validate([
@@ -81,25 +87,25 @@ class ArticleController extends Controller
             
             //     return redirect()->route('article.index','id')->with('message', 'Articolo inserito con successo!');
             // }
-            public function store(Request $request)
+            
+            //?Vecchia versione store 2.0
+            public function store(ArticleStoreRequet $request)
             {
-                $request->validate([
-                    'title' => 'required|string|max:255',
-                    'subtitle' => 'nullable|string|max:255',
-                    'article_description' => 'required|string',
-                    
-                ]);
-                
                 $article = new Article();
                 $article->title = $request->input('title');
                 $article->subtitle = $request->input('subtitle');
                 $article->article_description = $request->input('article_description');
-                $article->author = auth()->id(); // Imposta l'ID dell'autore sull'ID dell'utente loggato
+                $article->category_id = $request->input('category_id');
+                $article->author_id = auth()->id(); // Associa l'ID dell'utente autenticato come autore dell'articolo
                 
                 $article->save();
                 
-                return redirect()->route('article.index','id')->with('message', 'Articolo inserito con successo!');
+                return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
             }
+            
+            
+            
+            //**************************************************************************************************** */
             
             
             
@@ -115,6 +121,14 @@ class ArticleController extends Controller
                     return redirect()->back()->with('error', 'Non sei autorizzato a eliminare questo articolo.');
                 }
             }
+
+            public function byUser(User $user){
+                //Funzione per mostrare gli articoli dell'utente loggato
+                $articles = Article::where('author_id', auth()->id())->get();
+//Vista da mostrare
+                return view('article.byUser', compact('articles', 'user'));
+            }
+
             
         }
         

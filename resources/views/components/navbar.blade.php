@@ -89,13 +89,17 @@
                     <ul class="navbar-nav me-5">
                         <li class="nav-item dropdown">
                             
+                            
+                            
                             <a class="nav-link dropdown-toggle nava" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Account di {{ Auth::user()->name ?? 'Ospite' }}
+                                Benvenuto {{ Auth::user()->name ?? 'Ospite' }}
+                                
+                                
                             </a>
                             
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 @auth
-                                    
+                                
                                 
                                 
                                 
@@ -106,15 +110,15 @@
                                     @csrf
                                     <button class="dropdown-item" type="submit">Logout</button>
                                 </form>
-
+                                
                                 @else
                                 <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
-
+                                
                                 @endauth
                                 
-
+                                
                                 
                                 
                                 {{-- <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li> --}}

@@ -58,8 +58,8 @@ class ProfileController extends Controller
             'name' => 'required',
             'phone' => 'nullable|alpha_num',
             'company_address' => 'required',
-            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'short_description' => 'required',
+            'img' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
         
         $profile = new User();

@@ -2,8 +2,11 @@
     <style>
         body{
             background-image: url('{{ asset('images/test11.jpg') }}');'
+            brightness: 10%!important;
+            background-color: rgba(255, 255, 255, 0.8); /* Imposta il colore di sfondo con un'opacità del 80% */
+            backdrop-filter: blur(5); /* Applica uno sfondo sfocato */
+            background-size: cover;
             background-position: center;
-            background-size: fit;
         }
     </style>
     <body class="body-welcome">
@@ -19,7 +22,6 @@
             <div class="row py-lg-1">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Scrivi un Fumetto</h1>
-                    <p class="lead">Inserisci il tuo Fumetto</p>
                     <a href="{{ route('article.create') }}" class="btn btn-primary my-2">Aggiungi Fumetto</a>
                     <a href="{{ route('article.index', 'article') }}" class="btn btn-secondary my-2">Vedi Fumetti</a>
                     <p class="lead">Oppure fai una ricerca</p>

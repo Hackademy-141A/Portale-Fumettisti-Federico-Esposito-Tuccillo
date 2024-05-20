@@ -30,6 +30,10 @@
                     <label for="article_description" class="form-label">Corpo</label>
                     <textarea class="form-control" id="article_description" name="article_description">{{$article->article_description}}</textarea>
                 </div>
+
+                
+                <div class="row">{{$article->categories}}</div>
+
                 
                 {{-- <div class="mb-3">
                     <label for="img" class="form-label">Immagine</label>

@@ -1,58 +1,55 @@
 @import 'bootstrap';
 
-*{
+* {
     font-family: 'Poppins', sans-serif;
 }
 
-
-body{
+body {
     padding: 70px;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+    background-position: center!important;
+    background-attachment: fixed!important;
+    overflow: hidden!important;
 }
 
-
-.imgformcreate{
+.imgformcreate {
     background-size: cover!important;
     background-position: center;
 }
-.body-welcome{
-    
+
+.body-welcome {
     color: white;
     background-color: #131B23;
     height: 1200px;
 } 
 
-.navbar{
+.navbar {
     background-color: #45425A!important;
 }
 
 .centernav {
-
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.nava{
+.nava {
     color: white;
 }
 
-.nava:hover{
+.nava:hover {
     color: blue;
 }
 
-/* body{
-    background-color: #cdcdcd;
-} */
-
-
-
-.navcustm{
+.navcustm {
     background-color: #586BA4;
     border:#000000;
     border-radius: 2px;
     box-sizing: border-box;
     box-shadow: 0px 0px 10px 3px #ffffff;
 } 
+
 @keyframes rainbow {
     0% { color: red; }
     20% { color: orange; }
@@ -77,10 +74,10 @@ body{
     /* Avvia l'animazione */
     animation-play-state: running;
 }
+
 /* ORA AGGIUNGIAMO STILE AL FOOTER */
 
-footer{
-    
+footer {
     font-size: small;
     color: white!important;
     background-color: #262626;
