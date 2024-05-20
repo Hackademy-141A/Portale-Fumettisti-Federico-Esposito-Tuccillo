@@ -85,7 +85,7 @@
                                     subtitle="{{$article->subtitle}}"
                                     body="{{$article->body}}"
                                     short_description="{{$article->short_description}}"
-                                    img="{{$article->img}}"
+                                    img="{{$article->image}}"
                                     writer="{{$article->user->name}}"
                                     hrefbyUser="{{route('article.byUser',['user'=>$article->user->id] )}}"
                                     hrefShow="{{route('article.show', compact('article'))}}"

@@ -26,8 +26,8 @@ class ArticleStoreRequet extends FormRequest
                 'title' => 'required|min:3|max:255',
                 'subtitle' => 'required|min:3|max:255',
                 'article_description' => 'required|min:10|max:1000',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:6144',
                 'category_id' => 'required|exists:categories,id',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg|max:6144',
         ];
     }
 
@@ -41,7 +41,8 @@ class ArticleStoreRequet extends FormRequest
             'article_description.required' => 'La descrizione è obbligatoria.',
             'article_description.min' => 'La descrizione deve avere almeno 10 caratteri.',
             'article_description.max' => 'La descrizione non può avere più di 1000 caratteri.',
-            'category_id.required' => 'La categoria è da inserire obbligatoriamente.'
+            'category_id.required' => 'La categoria è da inserire obbligatoriamente.',
+            'image.required' => 'L\'immagine è obbligatoria.',
         ];
     }
 }

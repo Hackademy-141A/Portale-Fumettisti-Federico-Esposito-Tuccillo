@@ -91,44 +91,53 @@ class ArticleController extends Controller
             //?Vecchia versione store 2.0
             public function store(ArticleStoreRequet $request)
             {
-                $article = new Article();
-                $article->title = $request->input('title');
-                $article->subtitle = $request->input('subtitle');
-                $article->article_description = $request->input('article_description');
-                $article->category_id = $request->input('category_id');
-                $article->author_id = auth()->id(); // Associa l'ID dell'utente autenticato come autore dell'articolo
+                // $article = new Article();
+                // $article->title = $request->input('title');
+                // $article->subtitle = $request->input('subtitle');
+                // $article->article_description = $request->input('article_description');
+                // $article->category_id = $request->input('category_id');
+                // $article->author_id = auth()->id(); // Associa l'ID dell'utente autenticato come autore dell'articolo
                 
-                $article->save();
+                // $article->save();
                 
-                return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
-            }
-            
-            
-            
-            //**************************************************************************************************** */
-            
-            
-            
-            // Elimina un Articolo dell'utente loggato
-            public function destroy(Article $article)
-            {
-                $article = Article::findOrFail($article->id);
-                // Verifica che l'utente loggato sia l'autore dell'articolo
-                if ($article->author === auth()->id()) {
-                    $article->delete();
-                    return redirect()->route('article.index','id')->with('success', 'Articolo eliminato con successo!');
-                } else {
-                    return redirect()->back()->with('error', 'Non sei autorizzato a eliminare questo articolo.');
+                $article = Article::create([
+                    'title' => $request->input('title'),
+                    'subtitle' => $request->input('subtitle'),
+                    'article_description' => $request->input('article_description'),
+                    'category_id' => $request->input('category_id'),
+                    'author_id' => auth()->id(),
+                    'image' => $request->file('img')->store('public/images'),
+                ]);
+                    
+                    return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
                 }
+                
+                
+                
+                //**************************************************************************************************** */
+                
+                
+                
+                // Elimina un Articolo dell'utente loggato
+                public function destroy(Article $article)
+                {
+                    $article = Article::findOrFail($article->id);
+                    // Verifica che l'utente loggato sia l'autore dell'articolo
+                    if ($article->author === auth()->id()) {
+                        $article->delete();
+                        return redirect()->route('article.index','id')->with('success', 'Articolo eliminato con successo!');
+                    } else {
+                        return redirect()->back()->with('error', 'Non sei autorizzato a eliminare questo articolo.');
+                    }
+                }
+                
+                public function byUser(User $user){
+                    //Funzione per mostrare gli articoli dell'utente loggato
+                    $articles = Article::where('author_id', auth()->id())->get();
+                    //Vista da mostrare
+                    return view('article.byUser', compact('articles', 'user'));
+                }
+                
+                
             }
-
-            public function byUser(User $user){
-                //Funzione per mostrare gli articoli dell'utente loggato
-                $articles = Article::where('author_id', auth()->id())->get();
-//Vista da mostrare
-                return view('article.byUser', compact('articles', 'user'));
-            }
-
             
-        }
-        

@@ -15,6 +15,7 @@ class Article extends Model
         'article_description',
         'author_id', // Modifica il nome della colonna per l'ID dell'autore
         'category_id', // Modifica il nome della colonna per l'ID della categoria
+        'image',
     ];
     
     // Definisci la relazione con l'autore

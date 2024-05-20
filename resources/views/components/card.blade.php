@@ -1,6 +1,6 @@
 <div>
     <div class="card" style="width: 18rem;">
-        {{-- <img class="card-img-top" src="{{Storage::url($img)}}" alt="Card image cap"> --}}
+        <img class="card-img-top" src="{{Storage::url($img)}}" alt="Card image cap">
         <div class="card-body">
             <h4 class="card-title">{{$title}}</h4>
             <h5 class="card-text">{{$subtitle}}</h5>

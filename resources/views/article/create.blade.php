@@ -53,8 +53,8 @@
                     
                     {{-- Immagine --}}
                     <div class="mb-3">
-                        <label for="image" class="form-label">Immagine</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <label for="img" class="form-label">Immagine</label>
+                        <input type="file" class="form-control" id="img" name="img">
                     </div>
                     
                     {{-- Invia --}}
