@@ -38,11 +38,11 @@ class ProfileController extends Controller
         $profile = User::findOrFail($user);
         
         $request->validate([
-            'name' => 'required|string|max:15',
+            'name' => 'nullable|string|max:15',
             'phone' => 'nullable|string|max:15',
             'company_address' => 'nullable|string|max:255',
             'short_description' => 'nullable|string|max:500',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'nullable|string|email|max:30',
         ]);
         
