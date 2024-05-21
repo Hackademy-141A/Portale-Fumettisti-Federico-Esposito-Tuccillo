@@ -42,5 +42,6 @@ Route::get('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name(
 
 
 
-//Rotta kitammuort
+//CREAZIONE Rotta kitammuort
+
 

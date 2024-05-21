@@ -54,6 +54,9 @@ class ArticleController extends Controller
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'article_description' => 'required|string',
+            'category_id' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
             
         ]);
         
@@ -61,6 +64,9 @@ class ArticleController extends Controller
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
             'article_description' => $request->input('article_description'),
+            'category_id' => $request->input('category_id'),
+            'image' => $request->file('image')->store('public/images'),
+
         ]);
         
         return redirect()->route('article.index','id')->with('success', 'Articolo aggiornato con successo!');
@@ -106,9 +112,9 @@ class ArticleController extends Controller
                     'article_description' => $request->input('article_description'),
                     'category_id' => $request->input('category_id'),
                     'author_id' => auth()->id(),
-                    'image' => $request->file('img')->store('public/images'),
-                ]);
+                    'image' => $request->file('image')->store('public/images'),
                     
+                ]);
                     return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
                 }
                 
@@ -123,7 +129,7 @@ class ArticleController extends Controller
                 {
                     $article = Article::findOrFail($article->id);
                     // Verifica che l'utente loggato sia l'autore dell'articolo
-                    if ($article->author === auth()->id()) {
+                    if ($article->author_id === auth()->id()) {
                         $article->delete();
                         return redirect()->route('article.index','id')->with('success', 'Articolo eliminato con successo!');
                     } else {

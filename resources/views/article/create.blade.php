@@ -25,6 +25,16 @@
             <div class="card-body">
                 <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
                     {{-- Titolo --}}
                     <div class="mb-3 text-center">
                         <label for="title" class="form-label">Titolo</label>
@@ -53,8 +63,8 @@
                     
                     {{-- Immagine --}}
                     <div class="mb-3">
-                        <label for="img" class="form-label">Immagine</label>
-                        <input type="file" class="form-control" id="img" name="img">
+                        <label for="image" class="form-label">Immagine</label>
+                        <input type="file" class="form-control" id="image" name="image">
                     </div>
                     
                     {{-- Invia --}}

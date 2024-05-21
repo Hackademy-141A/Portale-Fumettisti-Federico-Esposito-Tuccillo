@@ -18,7 +18,7 @@
                 
                 body="{{$article->body}}"
                 
-                img="{{$article->img}}"
+                img="{{$article->image}}"
                 
                 writer="{{$article->user->name}}"
                 

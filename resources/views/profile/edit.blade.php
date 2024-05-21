@@ -30,6 +30,12 @@
                     <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
                 </div>
 
+                <div class="mb-3">
+                    <label for="image" class="form-label">Immagine Profilo:</label>
+                    <input name="image" type="file" accept="image/jpg,image/jpeg,image/webp" id="image" class="form-control">
+                </div>
+                
+
                 <button type="submit" class="btn btn-primary">Invia</button>
                 
             </form>
