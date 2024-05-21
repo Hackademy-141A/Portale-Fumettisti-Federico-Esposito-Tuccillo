@@ -1,4 +1,17 @@
 <x-layout>
+    <style>
+        body{
+            background-color: rgb(52, 112, 146);
+            
+        }
+
+        .form-control{
+            border-radius: 20px;
+            border: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5);
+        }
+    </style>
 
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -9,20 +22,17 @@
             </ul>
         </div>
         @endif
-        <div class="container my-5 text-center">
-            <div class="row">
-                <div class="col-8">
+
+        {{--! Form --}}
+        <div class="container">
+            <div class="mx-auto col-5 text-center">
+                <div class="form-control">
                     
-                    <form method="POST" action="{{route('login') }}">
+                    <form method="POST" action="{{route('login') }}" class="col-10 mx-auto mb-3 p-2 rounded">
+                        <h3>Benvenuto Utente</h3>
+                        <p>Accedi con i tuoi dati</p>
                         
                         @csrf
-                        
-                        
-                        {{-- <div class="mb-3">
-                            <label for="name" class="form-label">Nome</label>
-                            <input name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nome">
-                            
-                        </div>  --}}
                         
                         
                         <div class="mb-3">

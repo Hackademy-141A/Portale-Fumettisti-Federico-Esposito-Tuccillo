@@ -13,7 +13,7 @@ class ArticleController extends Controller
     // Permetti solo agli utenti loggati di accedere alla pagina
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show');;
+        $this->middleware('auth')->except('index','show');
     }
     
     // Mostra la pagina di index degli Articoli dell'utente loggato
