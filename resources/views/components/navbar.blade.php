@@ -80,7 +80,8 @@
                     <!-- Voci centrali della navbar -->
                     <ul class="navbar-nav centernav mx-auto" style="margin-left: auto; margin-right: auto;">
                         <li class="nav-item">
-                            <a class="nav-link nava" href="#">Cerca Fumetti Da sistemare</a>
+                            <a class="nav-link nava" href=""> </a>
+                            {{--  --}}
                         </li>
                     </ul>
                     
@@ -103,25 +104,25 @@
                                 
                                 
                                 
-                                <li><a class="dropdown-item " href="{{route('profile.show', 'id')}}">Profilo</a></li>
-                                <li><a class="dropdown-item" href="{{route('profile.edit', 'id')}}">Impostazioni</a></li>
+                                <li><a class="dropdown-item " href="{{route('article.create')}}">Aggiungi Fumetto</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <form class="" method="POST" action="{{ route('logout') }}">
+                                <li><a class="dropdown-item" href="{{route('article.byUser', Auth::user()->id)}}">I Tuoi Fumetti</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{route('profile.edit', Auth::user()->id)}}">Profilo</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <form class="text-center" method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button class="dropdown-item" type="submit">Logout</button>
+                                    <button class="btn btn-danger" type="submit">Disconnect</button>
                                 </form>
                                 
                                 @else
                                 <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+                                {{-- <li><hr class="dropdown-divider"></li> --}}
                                 
+                                <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+                            
                                 @endauth
                                 
-                                
-                                
-                                
-                                {{-- <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li> --}}
                             </ul>
                         </li>
                     </ul>

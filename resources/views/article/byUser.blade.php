@@ -1,4 +1,9 @@
 <x-layout>
+    <style>
+        .container{
+            margin-top: 10vh;
+        }
+    </style>
     <div class="container">
         <div class="row text-center">
             <div class="col-12">
@@ -10,13 +15,13 @@
     <div class="container">
         <div class="row">
             @forelse ($articles as $article)
-            <div class="col-12 col-md-4 mt-4">
+            <div class="col-12 col-md-4 p-4">
                 <x-card 
                 title="{{$article->title}}"
                 
                 subtitle="{{$article->subtitle}}"
                 
-                body="{{$article->body}}"
+                body="{{$article->article_description}}"
                 
                 img="{{$article->image}}"
                 

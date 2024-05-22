@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class ProfileController extends Controller
         return view('profile.index', ['user' => $request->user()]);
     }
     
-    public function create(Request $request){
-        return view('profile.create');
-    }
+    // public function create(Request $request){
+    //     return view('profile.create');
+    // }
     
     //* Mostra il profilo del singolo utente loggato
     public function show(Request $request){
@@ -33,21 +34,14 @@ class ProfileController extends Controller
     }
     
     //* Mostra la pagina di aggiornamento del profilo dell'utente loggato
-    public function update(Request $request, $user)
+    public function update(ProfileUpdateRequest $request, $user)
     {
         $profile = User::findOrFail($user);
         
-        $request->validate([
-            'name' => 'nullable|string|max:15',
-            'phone' => 'nullable|string|max:15',
-            'company_address' => 'nullable|string|max:255',
-            'short_description' => 'nullable|string|max:500',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'nullable|string|email|max:30',
-        ]);
-        
         $data = [
             'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'surname' => $request->input('surname'),
             'phone' => $request->input('phone'),
             'company_address' => $request->input('company_address'),
             'short_description' => $request->input('short_description'),
@@ -55,18 +49,18 @@ class ProfileController extends Controller
             'email' => $request->input('email'),
             'image' => $request->file('image')->store('public/images'),
         ];
-
+        
         // Controllo se è stato caricato un nuovo file immagine
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
-        //     $image->storeAs('public/images', $imageName); // Salva l'immagine nel percorso specificato
-        //     $data['image'] = 'images/' . $imageName; // Imposta il percorso dell'immagine nel database
-        // }
-
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/images', $imageName); // Salva l'immagine nel percorso specificato
+            $data['image'] = 'images/' . $imageName; // Imposta il percorso dell'immagine nel database
+        }
+        
         // Aggiorna il profilo con i nuovi dati
         $profile->update($data);
-
+        
         return redirect()->route('home')->with('success', 'Profilo aggiornato con successo!');
     }
     

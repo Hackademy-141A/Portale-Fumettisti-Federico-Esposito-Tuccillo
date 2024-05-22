@@ -13,7 +13,7 @@ class ArticleController extends Controller
     // Permetti solo agli utenti loggati di accedere alla pagina
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show');
+        $this->middleware('auth')->except('index','show', 'byUser');
     }
     
     // Mostra la pagina di index degli Articoli dell'utente loggato
@@ -139,7 +139,7 @@ class ArticleController extends Controller
                 
                 public function byUser(User $user){
                     //Funzione per mostrare gli articoli dell'utente loggato
-                    $articles = Article::where('author_id', auth()->id())->get();
+                    $articles = Article::where('author_id', $user->id)->get();
                     //Vista da mostrare
                     return view('article.byUser', compact('articles', 'user'));
                 }

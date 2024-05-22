@@ -1,17 +1,19 @@
 <x-layout>
-    <style>
+    {{-- <style>
         body{
-            background-image: url('{{ asset('images/test11.jpg') }}');'
+            margin-top:0;
+            background-image: url('{{ asset('images/test11.jpg') }}');
             brightness: 10%!important;
             background-color: rgba(255, 255, 255, 0.8); /* Imposta il colore di sfondo con un'opacità del 80% */
             backdrop-filter: blur(5); /* Applica uno sfondo sfocato */
             background-size: cover;
-            background-position: center;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
         }
-    </style>
+    </style> --}}
     <body class="body-welcome">
         <header class="text-center text-white py-4">
-            <div class="container">
+            <div class="container mt-5">
                 <h1 class="display-5">Benvenuto Fumettista</h1>
                 <p class="lead">Esplora il mondo dei fumetti e porta la tua creatività al livello successivo!</p>
             </div>

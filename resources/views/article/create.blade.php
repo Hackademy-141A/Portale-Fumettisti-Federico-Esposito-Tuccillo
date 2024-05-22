@@ -1,6 +1,7 @@
 <x-layout> 
     <style>
         body {
+            margin-top: 100px;
             background-image: url('{{ asset('images/test1.jpg') }}');
             background-repeat: no-repeat!important;
             background-size: cover!important;
@@ -10,6 +11,7 @@
         }
         .card-body {
             background-color: rgba(255, 255, 255, 0.8);
+            
             backdrop-filter: blur(5);
             border-radius: 20px;
             padding: 20px;
@@ -17,7 +19,7 @@
     </style>
     @auth
     
-    <div class="container col-md-4 mt-5">
+    <div class="container col-md-4">
         <div class="card-body">
             <div class="card-header text-center">
                 Inserisci il tuo Fumetto

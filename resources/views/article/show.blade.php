@@ -1,5 +1,21 @@
 <x-layout>
     <style>
+*{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+
+}
+.container .form-control{
+    /* max-width: 500px; */
+    /* background: #f1f7fe!important; */
+}
+
         .cardb {
     --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
     width: 500px;
@@ -99,7 +115,7 @@
                 <h2 class="display-4 fst-italic">Stai leggendo: {{$article->title}}</h1>
                 </div>
             </div>
-        </div>
+        
         <div class="container">
             <div class="row ">
                 
@@ -117,7 +133,7 @@
                 
                 <div class="col-7">
                     <h1 class="display-1">{{$article->subtitle}}</h1>
-                    <p >{{$article->body}}</p>
+                    <p >{{$article->article_description}}</p>
                     @if (Auth::id()== $article->author_id)
                     <a class="btn btn-warning container-fluid" href="{{route('article.edit', compact('article'))}}">Modifica</a>
                     <form  class="container-fluid" method="POST" action="{{route('article.destroy', compact('article'))}}">
@@ -126,6 +142,7 @@
                         <button class="btn btn-danger" type="submit">Elimina Articolo</button>
                     </form>
                     @endif
+                </div>
                 </div>
             </div>
         </div>

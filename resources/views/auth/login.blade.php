@@ -2,7 +2,8 @@
     <style>
         body{
             background-color: rgb(52, 112, 146);
-            
+            /* Aggiungiamo spazio sopra al testo */
+            margin-top: 100px;
         }
 
         .form-control{

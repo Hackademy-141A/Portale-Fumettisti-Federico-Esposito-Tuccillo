@@ -1,0 +1,199 @@
+/* Stili generali */
+@import 'bootstrap';
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box; /* Aggiunto per evitare problemi di dimensionamento */
+}
+
+body {
+    padding: 0px!important;
+    margin: 0; /* Aggiunto per rimuovere eventuali margini di default */
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    overflow: hidden !important;
+}
+
+.imgformcreate {
+    background-size: cover !important;
+    background-position: center;
+}
+
+.body-welcome {
+    color: white;
+    background-color: #131B23;
+    height: 1200px;
+}
+
+.navbar {
+    background-color: #45425A !important;
+    z-index: 1000; /* Imposta il valore di z-index per far sì che la navbar sia sopra gli altri elementi */
+    position: fixed; /* Fissa la navbar in cima alla pagina */
+    width: 100%; /* Assicura che la navbar abbia la larghezza completa */
+    top: 0; /* Posiziona la navbar in alto */
+}
+
+.centernav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nava {
+    color: white;
+}
+
+.nava:hover {
+    color: blue;
+}
+
+.navcustm {
+    background-color: #586BA4;
+    border: #000000;
+    border-radius: 2px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px 3px #ffffff;
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    20% { color: orange; }
+    40% { color: yellow; }
+    60% { color: green; }
+    80% { color: blue; }
+    100% { color: violet; }
+}
+
+.rainbow-text {
+    animation: rainbow 3s infinite;
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+.rainbow-text:hover {
+    animation-play-state: running;
+}
+
+footer {
+    font-size: small;
+    color: white !important;
+    background-color: #262626;
+    margin-top: -7cm !important;
+    margin-bottom: -0.5cm;
+}
+
+/* Stili specifici per la pagina di registrazione */
+.form-box {
+    max-width: 600px;
+    background: #f1f7fe;
+    overflow: hidden;
+    border-radius: 16px;
+    color: #010101;
+    margin: auto;
+    margin-top: 100px; /* Aggiunto per spaziare il form dalla navbar */
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px 24px;
+    gap: 16px;
+    text-align: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #666;
+}
+
+.form-container {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 1rem 0 .5rem;
+    width: 100%;
+}
+
+.input {
+    background: none;
+    border: 0;
+    outline: 0;
+    height: 40px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    font-size: .9rem;
+    padding: 8px 15px;
+}
+
+.form-section {
+    padding: 16px;
+    font-size: .85rem;
+    background-color: #e0ecfb;
+    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+    font-weight: bold;
+    color: #0066ff;
+    transition: color .3s ease;
+}
+
+.form-section a:hover {
+    color: #005ce6;
+    text-decoration: underline;
+}
+
+.form button {
+    background-color: #0066ff;
+    color: #fff;
+    border: 0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.form button:hover {
+    background-color: #005ce6;
+}
+
+.profile-image-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.containerv {
+    width: 100%;
+    height: 100%;
+    --s: 200px;
+    --c1: #1d1d1d;
+    --c2: #4e4f51;
+    --c3: #3c3c3c;
+    
+    background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        var(--c3) 0 180deg
+    )
+    calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+        from 30deg,
+        var(--c1) 0 60deg,
+        var(--c2) 0 120deg,
+        var(--c3) 0 180deg
+    );
+    background-size: var(--s) calc(var(--s) * 0.577);
+}

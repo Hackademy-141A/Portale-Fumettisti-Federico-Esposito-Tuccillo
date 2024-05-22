@@ -4,7 +4,7 @@
         {{ session('message') }}
     </div>
     @endif
-    <div class="container">
+    <div class="container mt-5">
         <div class="row text-center">
             <div class="col-12">
                 <h1 class="display-1">Tutti i nostri articoli</h1>
@@ -26,7 +26,7 @@
 
                             subtitle="{{ $article->subtitle }}"
 
-                            body="{{ $article->body }}"
+                            body="{{ $article->article_description }}"
 
                             img="{{ $article->image }}"
 

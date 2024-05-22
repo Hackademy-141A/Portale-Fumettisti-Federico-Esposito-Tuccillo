@@ -25,14 +25,14 @@ Route::prefix('article')->group(function(){
     Route::put('/{article}/update', [ArticleController::class, 'update'])->name('article.update');// Aggiorna un articolo esistente
     Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
     Route::delete('/{article}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');// Elimina un articolo
-    route::get('/{article}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
+    route::get('{article_id}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
 
     Route::get('/by-user/{user}', [ArticleController::class, 'byUser'])->name('article.byUser'); // Mostra gli articoli di un utente specifico
 });
 
 
 //!Rotte per la gestione dei profili:
-Route::get('/create-profile', [ProfileController::class, 'create'])->name('profile.create'); // Crea un nuovo profilo
+// Route::get('/create-profile', [ProfileController::class, 'create'])->name('profile.create'); // Crea un nuovo profilo
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index'); // Mostra l'elenco dei profili
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); // Mostra un profilo specifico
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Mostra il modulo di modifica del profilo

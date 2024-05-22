@@ -7,7 +7,8 @@
             <h4 class="card-title">{{$title}}</h4>
             <h5 class="card-text">{{$subtitle}}</h5>
             <p class="card-text">{{Str::limit($body,10)}}</p>
-            <a href="{{$hrefbyUser}}">Pubblicato da {{$writer}}</a>
+            <span>Pubblicato da: <a href="{{$hrefbyUser}}" style="text-decoration: none;">{{$writer}}</a></span>
+            {{-- <a href="{{$hrefbyUser}}">Pubblicato da {{$writer}}</a> --}}
             {{-- <a href="{{$hrefShow}}" class="btn btn-warning">Vai al dettaglio</a> --}}
             
         </div>
