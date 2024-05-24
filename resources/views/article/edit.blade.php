@@ -30,30 +30,40 @@
                     <label for="article_description" class="form-label">Corpo</label>
                     <textarea class="form-control" id="article_description" name="article_description">{{$article->article_description}}</textarea>
                 </div>
-
+                
                 
                 <div class="row">{{$article->categories}}</div>
-
                 
-                {{-- <div class="mb-3">
+                
+                <div class="mb-3">
                     <label for="img" class="form-label">Immagine</label>
                     <input type="file" class="form-control" id="img" name="img">
-                </div> --}}
-                {{-- ?Invia --}}
-                <button type="submit" class="btn btn-primary">Modifica Fumetto</button>
-                
-            </form>
-        </div>
-    </div>
-    @endauth
-    {{-- !Per Guests --}}
-    @guest
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-12">
-                <h1 class="display-1">Non Puoi Aggiungere fumetti se non sei registrato!</h1>
+                </div>
+                {{-- PEr le categorie --}}
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Categoria</label>
+                    <select class="form-control" id="category_id" name="category_id">
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ $category->id == $article->category_id?'selected' : '' }}>{{ $category->name }}</option>
+                        @endforeach
+                    </select></div>
+                    
+                    {{-- ?Invia --}}
+                    <button type="submit" class="btn btn-primary">Modifica Fumetto</button>
+                    
+                </form>
             </div>
         </div>
-    </div>
-    @endguest
-</x-layout>
+        @endauth
+        {{-- !Per Guests --}}
+        @guest
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-1">Non Puoi Aggiungere fumetti se non sei registrato!</h1>
+                </div>
+            </div>
+        </div>
+        @endguest
+    </x-layout>
+    

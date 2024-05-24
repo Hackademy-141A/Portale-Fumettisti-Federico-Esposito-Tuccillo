@@ -11,6 +11,10 @@
     border: none;
 
 }
+
+body{
+    margin-top: 60px;
+}
 .container .form-control{
     /* max-width: 500px; */
     /* background: #f1f7fe!important; */
@@ -115,6 +119,12 @@
                 <h2 class="display-4 fst-italic">Stai leggendo: {{$article->title}}</h1>
                 </div>
             </div>
+
+            {{-- Categoria --}}
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="display-5">Genere: {{$article->category->name}}</h3>
+                </div></div>
         
         <div class="container">
             <div class="row ">
@@ -134,6 +144,14 @@
                 <div class="col-7">
                     <h1 class="display-1">{{$article->subtitle}}</h1>
                     <p >{{$article->article_description}}</p>
+
+                    {{-- Vuoi leggere di più da parte di questo utente? --}}
+                    <div class="form-control mt-5">
+
+                        <h4 class="text-center">Vuoi leggere di più da parte di questo utente?</h4>
+                        <a class="btn btn-primary container" href="{{ route('article.byUser',['user'=>$article->user->id] ) }}">Vai al dettaglio</a>
+                    </div>
+
                     @if (Auth::id()== $article->author_id)
                     <a class="btn btn-warning container-fluid" href="{{route('article.edit', compact('article'))}}">Modifica</a>
                     <form  class="container-fluid" method="POST" action="{{route('article.destroy', compact('article'))}}">

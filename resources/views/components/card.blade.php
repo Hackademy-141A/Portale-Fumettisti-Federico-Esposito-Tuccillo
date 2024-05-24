@@ -13,7 +13,7 @@
             
         </div>
         <button id="btn" style="background-color: rgb(0, 140, 255);">
-            <a href="{{$hrefShow}}" class="leggianchorindex">LEGGI</a>
+            <a href="{{$hrefShow}}" class="leggianchorindex">Vai al dettaglio</a>
         </button>
         <style>
             button {
