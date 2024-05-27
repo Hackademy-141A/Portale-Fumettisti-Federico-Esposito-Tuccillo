@@ -7,10 +7,12 @@
             <h4 class="card-title">{{$title}}</h4>
             <h5 class="card-text">{{$subtitle}}</h5>
             <p class="card-text">{{Str::limit($body,10)}}</p>
+            @forelse ($tags as $tag)
+                <small># {{$tag->name}} </small>
+            @empty
+                <p>Questo articolo non ha Tags.</p>
+            @endforelse
             <span>Pubblicato da: <a href="{{$hrefbyUser}}" style="text-decoration: none;">{{$writer}}</a></span>
-            {{-- <a href="{{$hrefbyUser}}">Pubblicato da {{$writer}}</a> --}}
-            {{-- <a href="{{$hrefShow}}" class="btn btn-warning">Vai al dettaglio</a> --}}
-            
         </div>
         <button id="btn" style="background-color: rgb(0, 140, 255);">
             <a href="{{$hrefShow}}" class="leggianchorindex">Vai al dettaglio</a>

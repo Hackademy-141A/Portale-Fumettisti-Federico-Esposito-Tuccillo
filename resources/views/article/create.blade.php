@@ -62,11 +62,18 @@
                             @endforeach
                         </select>
                     </div>
+
+                    {{-- Tags --}}
+                    <div class="mb-3 text-center">
+                        <label for="tags" class="form-label">Inserisci Tags</label>
+                        <input type="text" name="tags" id="tags" class="form-control">
+                        <small class="text-danger">Dividi ogni tag con una virgola.</small>
+                    </div>
                     
                     {{-- Immagine --}}
                     <div class="mb-3">
                         <label for="image" class="form-label">Immagine</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" accept="image/jpg, image/jpeg, image/png, image/webp" class="form-control" id="image" name="image">
                     </div>
                     
                     {{-- Invia --}}

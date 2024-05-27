@@ -28,6 +28,7 @@ class ArticleStoreRequet extends FormRequest
                 'article_description' => 'required|min:10|max:1000',
                 'category_id' => 'required|exists:categories,id',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg|max:6144',
+                'tags' => 'required|string',
         ];
     }
 
@@ -43,6 +44,8 @@ class ArticleStoreRequet extends FormRequest
             'article_description.max' => 'La descrizione non può avere più di 1000 caratteri.',
             'category_id.required' => 'La categoria è da inserire obbligatoriamente.',
             'image.required' => 'L\'immagine è obbligatoria.',
+            'tags.required' => 'I tag sono obbligatori.',
+            'tags.string' => 'I tag devono essere di tipo testo.',
         ];
     }
 }

@@ -1,15 +1,15 @@
 <?php
 
-use App\Models\Category;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Category;
 
 return new class extends Migration
 {
     /**
-    * Run the migrations.
-    */
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        
+
         $categories = [
             ['name' => 'Azione'],
             ['name' => 'Fantasy'],
@@ -26,17 +26,18 @@ return new class extends Migration
             ['name' => 'Leggenda'],
             ['name' => 'Comedy'],
         ];
-        foreach ($categories as $category){
+        foreach ($categories as $category) {
             Category::create([
                 'name' => $category['name'],
             ]);
-        };
-    }
-        /**
-        * Reverse the migrations.
-        */
-        public function down(): void
-        {
-            Schema::dropIfExists('categories');
         }
-    };
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('categories');
+    }
+};

@@ -29,10 +29,10 @@
                             body="{{ $article->article_description }}"
 
                             img="{{ $article->image }}"
-
-                            writer="{{ $article->user->name }}"
-
+                            
                             :tags="$article->tags"
+                            
+                            writer="{{ $article->user->name }}"
 
                             hrefbyUser="{{ route('article.byUser',['user'=>$article->user->id] ) }}"
 

@@ -3,8 +3,11 @@
 
 * {
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box; /* Aggiunto per evitare problemi di dimensionamento */
+
+    box-sizing: border-box;
+
 }
+
 
 body {
     padding: 0px!important;

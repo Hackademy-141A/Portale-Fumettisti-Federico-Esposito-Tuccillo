@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Category;
@@ -73,38 +74,13 @@ class ArticleController extends Controller
     }
     
     //! Salva un nuovo Articolo
-    //?Vecchia versione store 1.0
-    // public function store(Request $request)
-    // {
-        //     $request->validate([
-            //         'title' => 'required|string|max:255',
-            //         'subtitle' => 'nullable|string|max:255',
-            //         'article_description' => 'required|string',
-            //         'author' => 'required|integer',
-            //     ]);
-            
-            //     $article = new Article();
-            //     $article->title = $request->input('title');
-            //     $article->subtitle = $request->input('subtitle');
-            //     $article->article_description = $request->input('article_description');
-            //     $article->author = auth()->id(); // Imposta l'ID dell'autore sull'ID dell'utente loggato
-            
-            //     $article->save();
-            
-            //     return redirect()->route('article.index','id')->with('message', 'Articolo inserito con successo!');
-            // }
-            
             //?Vecchia versione store 2.0
             public function store(ArticleStoreRequet $request)
             {
-                // $article = new Article();
-                // $article->title = $request->input('title');
-                // $article->subtitle = $request->input('subtitle');
-                // $article->article_description = $request->input('article_description');
-                // $article->category_id = $request->input('category_id');
-                // $article->author_id = auth()->id(); // Associa l'ID dell'utente autenticato come autore dell'articolo
-                
-                // $article->save();
+                $tags = explode(',', $request->tags);
+                foreach ($tags as $i => $tag) {
+                    $tags[$i] = trim($tag);
+                }
                 
                 $article = Article::create([
                     'title' => $request->input('title'),
@@ -115,6 +91,11 @@ class ArticleController extends Controller
                     'image' => $request->file('image')->store('public/images'),
                     
                 ]);
+                foreach ($tags as $tag){
+                    $newTag = Tag::updateOrCreate([
+                        'name' => $tag
+                    ]);
+                }
                     return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
                 }
                 

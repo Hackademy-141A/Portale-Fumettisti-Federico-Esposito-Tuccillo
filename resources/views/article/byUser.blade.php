@@ -23,6 +23,8 @@
                 
                 body="{{$article->article_description}}"
                 
+                :tags="$article->tags"
+
                 img="{{$article->image}}"
                 
                 writer="{{$article->user->name}}"
