@@ -57,7 +57,7 @@ class ArticleController extends Controller
             'article_description' => 'required|string',
             'category_id' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
+            
             
         ]);
         
@@ -67,64 +67,85 @@ class ArticleController extends Controller
             'article_description' => $request->input('article_description'),
             'category_id' => $request->input('category_id'),
             'image' => $request->file('image')->store('public/images'),
-
+            
         ]);
+        
+        // Sincronizza i tag
+        $tags = explode(',', $request->input('tags'));
+        foreach ($tags as $i => $tag) {
+            $tags[$i] = trim($tag);
+        }
+        $tagIds = [];
+        foreach ($tags as $tag) {
+            $newTag = Tag::updateOrCreate(['name' => $tag]);
+            $tagIds[] = $newTag->id;
+        }
+        $article->tags()->sync($tagIds);
+        
+        
         
         return redirect()->route('article.index','id')->with('success', 'Articolo aggiornato con successo!');
     }
     
     //! Salva un nuovo Articolo
-            //?Vecchia versione store 2.0
-            public function store(ArticleStoreRequet $request)
-            {
-                $tags = explode(',', $request->tags);
-                foreach ($tags as $i => $tag) {
-                    $tags[$i] = trim($tag);
-                }
-                
-                $article = Article::create([
-                    'title' => $request->input('title'),
-                    'subtitle' => $request->input('subtitle'),
-                    'article_description' => $request->input('article_description'),
-                    'category_id' => $request->input('category_id'),
-                    'author_id' => auth()->id(),
-                    'image' => $request->file('image')->store('public/images'),
-                    
-                ]);
-                foreach ($tags as $tag){
-                    $newTag = Tag::updateOrCreate([
-                        'name' => $tag
-                    ]);
-                }
-                    return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
-                }
-                
-                
-                
-                //**************************************************************************************************** */
-                
-                
-                
-                // Elimina un Articolo dell'utente loggato
-                public function destroy(Article $article)
-                {
-                    $article = Article::findOrFail($article->id);
-                    // Verifica che l'utente loggato sia l'autore dell'articolo
-                    if ($article->author_id === auth()->id()) {
-                        $article->delete();
-                        return redirect()->route('article.index','id')->with('success', 'Articolo eliminato con successo!');
-                    } else {
-                        return redirect()->back()->with('error', 'Non sei autorizzato a eliminare questo articolo.');
-                    }
-                }
-                
-                public function byUser(User $user){
-                    //Funzione per mostrare gli articoli dell'utente loggato
-                    $articles = Article::where('author_id', $user->id)->get();
-                    //Vista da mostrare
-                    return view('article.byUser', compact('articles', 'user'));
-                }
-                
-                
-            }
+    //?Vecchia versione store 2.0
+    public function store(ArticleStoreRequet $request)
+    {
+        $tags = explode(',', $request->tags);
+        foreach ($tags as $i => $tag) {
+            $tags[$i] = trim($tag);
+        }
+        
+        $article = Article::create([
+            'title' => $request->input('title'),
+            'subtitle' => $request->input('subtitle'),
+            'article_description' => $request->input('article_description'),
+            'category_id' => $request->input('category_id'),
+            'author_id' => auth()->id(),
+            'image' => $request->file('image')->store('public/images'),
             
+        ]);
+        // Sincronizza i tag
+        $tags = explode(',', $request->input('tags'));
+        foreach ($tags as $i => $tag) {
+            $tags[$i] = trim($tag);
+        }
+        $tagIds = [];
+        foreach ($tags as $tag) {
+            $newTag = Tag::updateOrCreate(['name' => $tag]);
+            $tagIds[] = $newTag->id;
+        }
+        $article->tags()->sync($tagIds);
+        
+        
+        return redirect()->route('article.index', 'article')->with('message', 'Articolo inserito con successo!');
+    }
+    
+    
+    
+    //**************************************************************************************************** */
+    
+    
+    
+    // Elimina un Articolo dell'utente loggato
+    public function destroy(Article $article)
+    {
+        $article = Article::findOrFail($article->id);
+        // Verifica che l'utente loggato sia l'autore dell'articolo
+        if ($article->author_id === auth()->id()) {
+            $article->delete();
+            return redirect()->route('article.index','id')->with('success', 'Articolo eliminato con successo!');
+        } else {
+            return redirect()->back()->with('error', 'Non sei autorizzato a eliminare questo articolo.');
+        }
+    }
+    
+    public function byUser(User $user){
+        //Funzione per mostrare gli articoli dell'utente loggato
+        $articles = Article::where('author_id', $user->id)->get();
+        //Vista da mostrare
+        return view('article.byUser', compact('articles', 'user'));
+    }
+    
+    
+}

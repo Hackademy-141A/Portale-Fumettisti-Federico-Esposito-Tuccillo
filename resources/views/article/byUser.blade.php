@@ -17,6 +17,7 @@
             @forelse ($articles as $article)
             <div class="col-12 col-md-4 p-4">
                 <x-card 
+
                 title="{{$article->title}}"
                 
                 subtitle="{{$article->subtitle}}"

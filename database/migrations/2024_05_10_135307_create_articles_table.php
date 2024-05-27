@@ -23,8 +23,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->timestamps();
             
-            $table->string('comic_number')->nullable();
-            $table->string('comic_year')->nullable();
+            $table->string('comic_number')->nullable()->onDelete('cascade');
+            $table->string('comic_year')->nullable()->onDelete('cascade');
         });
     }
 

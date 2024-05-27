@@ -13,33 +13,32 @@
                     $chunks = $articles->chunk(4); // Dividi gli articoli in gruppi di massimo 4
                     @endphp
                     
-                        
+                    
                     
                     @forelse ($chunks as $chunk)
                     <div class="row">
-                        @foreach ($chunk as $article)
+                        @foreach ($articles as $article)
                         <div class="col-12 col-md-3 mb-5">
                             {{-- @dd($article); --}}
                             <x-card 
                             
-                            title="{{ $article->title }}"
-
-                            subtitle="{{ $article->subtitle }}"
-
-                            body="{{ $article->article_description }}"
-
-                            img="{{ $article->image }}"
+                            title="{{$article->title}}"
                             
-                            :tags="$article->tags"
+                            subtitle="{{$article->subtitle}}"
                             
-                            writer="{{ $article->user->name }}"
-
-                            hrefbyUser="{{ route('article.byUser',['user'=>$article->user->id] ) }}"
-
-                            hrefShow="{{ route('article.show', compact('article')) }}"
-
-                            href="{{ route('article.show', compact('article')) }}"
+                            body="{{$article->article_description}}"
                             
+                            :tags=" $article->tags "
+                            
+                            img="{{$article->image}}"
+                            
+                            writer="{{$article->user->name}}"
+                            
+                            hrefbyUser="{{route('article.byUser',['user'=>$article->user->id] )}}"
+                            
+                            hrefShow="{{route('article.show', compact('article'))}}"
+                            
+                            href="{{route('article.show', compact('article'))}}"
                             />
                         </div>
                         @endforeach
