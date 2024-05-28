@@ -26,7 +26,7 @@ Route::prefix('article')->group(function(){
     Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show'); // Mostra un articolo specifico
     Route::delete('/{article}/delete', [ArticleController::class, 'destroy'])->name('article.destroy');// Elimina un articolo
     route::get('{article_id}/index', [ArticleController::class, 'index'])->name('article.index'); // Mostra l'elenco degli articoli
-
+    //Mostra la vista fumettisti che hanno inserito articoli
     Route::get('/by-user/{user}', [ArticleController::class, 'byUser'])->name('article.byUser'); // Mostra gli articoli di un utente specifico
 });
 
@@ -34,12 +34,13 @@ Route::prefix('article')->group(function(){
 //!Rotte per la gestione dei profili:
 // Route::get('/create-profile', [ProfileController::class, 'create'])->name('profile.create'); // Crea un nuovo profilo
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index'); // Mostra l'elenco dei profili
- Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show'); // Mostra un profilo specifico
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Mostra il modulo di modifica del profilo
 Route::put('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update'); // Aggiorna un profilo esistente
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store'); // Salva un nuovo profilo
 Route::get('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Elimina un profilo
-Route::get('/profile/overview', [ProfileController::class, 'overview'])->name('profile.overview'); // Mostra l'elenco dei profilid
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');                // Mostra un profilo specifico
+Route::get('/profile/utenti', [ProfileController::class, 'fumettisti'])->name('profile.fumettisti'); //? Mostra l'elenco degli utenti
+ // Mostra l'elenco dei profilid
 //Rotta per la pagina di modifica password:
     Route::get('/profile/{id}/edit-password', [ProfileController::class, 'editPassword'])->name('profile.editPassword'); // Mostra il modulo di modifica della password
 

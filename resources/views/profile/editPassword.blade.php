@@ -4,6 +4,9 @@
         {{ session('message') }}
     </div>
     @endif
+    <body class="p-5 mt-5">
+        
+    
     <div class="container-xl px-4 mt-4">
         <div class="card mb-4">
             <div class="card-header">Cambia password</div>
@@ -28,12 +31,13 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Salva</button>
                     @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                    @endif
                 </form>
             </div>
         </div>
     </div>
+</body>
 </x-layout>

@@ -14,9 +14,13 @@ class ArticleController extends Controller
     // Permetti solo agli utenti loggati di accedere alla pagina
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show', 'byUser');
+        $this->middleware('auth')->except('index','show', 'byUser','fumettisti');
     }
-    
+
+        
+//Funzione per mostrare agli utenti ospiti e non loggati tutti i profili degli utenti che hanno inserito articoli
+
+
     // Mostra la pagina di index degli Articoli dell'utente loggato
     public function index(Request $request)
     {

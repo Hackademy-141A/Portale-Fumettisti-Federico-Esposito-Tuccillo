@@ -1,55 +1,44 @@
-<x-layout>
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
-
-
-    <div class="container mt-5">
-        <div class="row text-center">
-            <div class="col-12">
-                <h1 class="display-1">Tutti i Fumettisti</h1>
-                <div class="container">
-                    @php
-                    $chunks = $user->chunk(4); // Dividi gli articoli in gruppi di massimo 4
-                    @endphp
-                    @forelse ($chunks as $chunk)
-                    <div class="row">
-                        @foreach ($chunk as $article)
-                        <div class="col-12 col-md-3 mb-5">
-                            {{-- @dd($article); --}}
-                            <x-card 
-                            
-                            username="{{ $user->title }}"
-
-                            name="{{ $user->subtitle }}"
-
-                            short_description="{{ $user->user_description }}"
-
-                            img="{{ $user->image }}"
-
-                            writer="{{ $user->name }}"
-
-
-                            hrefbyUser="{{ route('article.byUser',['user'=>$article->user->id] ) }}"
-
-                            hrefShow="{{ route('article.show', compact('article')) }}"
-
-                            href="{{ route('article.show', compact('article')) }}"
-                            
-                            />
-                        </div>
-                        @endforeach
-                    </div>
-                    @empty
-                    <div class="col-12">
-                        <p>Questo utente non ha ancora inserito articoli!</p>
-                    </div>
-                    @endforelse
-                    
-                </div>
-            </div>
+<div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ Storage::url($img) }}" alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">{{ $username }}</h4>
+            <h5 class="card-text">{{ $phone }}</h5>
+            <p class="card-text">{{ Str::limit($bio, 10) }}</p>
         </div>
+        <button id="btn" style="background-color: rgb(0, 140, 255);">
+            <a href="{{$hrefbyUser}}" class="leggianchorindex">Vai al dettaglio</a>
+        </button>
     </div>
-</x-layout>
+</div>
+
+<style>
+    button {
+        padding: 10px 20px !important;
+        text-transform: uppercase;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 500;
+        color: #ffffff80;
+        text-shadow: none;
+        background: transparent;
+        cursor: pointer;
+        box-shadow: transparent;
+        border: 1px solid #ffffff80;
+        transition: 0.5s ease;
+        user-select: none;
+    }
+    .leggianchorindex {
+        text-decoration: none;
+        color: whitesmoke;
+    }
+    #btn:hover,
+    :focus {
+        color: #ffffff;
+        background: #008cff;
+        border: 1px solid #008cff;
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+        box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
+        0 0 100px #008cff;
+    }
+</style>

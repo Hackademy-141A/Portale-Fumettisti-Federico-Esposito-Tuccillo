@@ -80,15 +80,16 @@
                     <!-- Voci centrali della navbar -->
                     <ul class="navbar-nav centernav mx-auto" style="margin-left: auto; margin-right: auto;">
                         <li class="nav-item">
-                            <a class="nav-link nava" href=""> </a>
+                            <a class="nav-link nava" href="{{route('profile.fumettisti')}}">Fumettisti</a>
                             {{--  --}}
                         </li>
                     </ul>
                     
                     
                     {{--! Dropdown a destra  --}}
-                    <ul class="navbar-nav me-5">
+                    <ul class="navbar-nav me-5 ">
                         <li class="nav-item dropdown">
+                            
                             
                             
                             

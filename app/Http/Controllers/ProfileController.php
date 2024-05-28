@@ -12,9 +12,6 @@ use App\Http\Requests\ProfileUpdateRequest;
 class ProfileController extends Controller
 {
     
-    public function overview(Request $request){
-    return view('profile.overview', ['user' => $request->user()]);
-    }
     
     //* permetti solo a chi è loggato di accedere alla pagina
     public function __construct(){
@@ -31,8 +28,9 @@ class ProfileController extends Controller
         // }
         
         //* Mostra il profilo del singolo utente loggato
-        public function show(Request $request){
-            return view('profile.show', ['user' => $request->user()]);
+        public function show(){
+            $users = User::whereHas('articles')->get();
+            return view('profile.show', ['users' => $users]);;
         }
         
         //* Mostra la pagina di modifica del profilo dell'utente loggato
@@ -128,6 +126,14 @@ class ProfileController extends Controller
             ]);
             
             return redirect()->route('home')->with('success', 'Password aggiornata con successo!');
+            
+        }
+        
+        
+        
+        
+        public function fumettisti(){
+            return view('profile.fumettisti');
         }
     }
     

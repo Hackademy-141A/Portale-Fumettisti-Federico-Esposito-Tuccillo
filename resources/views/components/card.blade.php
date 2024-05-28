@@ -7,8 +7,10 @@
             <h4 class="card-title">{{$title}}</h4>
             <h5 class="card-text">{{$subtitle}}</h5>
             <p class="card-text">{{Str::limit($body,10)}}</p>
+            <h5 class="text-danger ">TAGS:</h5>
+            <div></div>
             @forelse ($tags as $tag)
-                <small># {{$tag->name}} </small>
+                <small class="">#{{$tag->name}} </small>
             @empty
                 <p>Questo articolo non ha Tags.</p>
             @endforelse
@@ -17,6 +19,9 @@
         <button id="btn" style="background-color: rgb(0, 140, 255);">
             <a href="{{$hrefShow}}" class="leggianchorindex">Vai al dettaglio</a>
         </button>
+
+
+
         <style>
             button {
                 padding: 10px 20px!important;

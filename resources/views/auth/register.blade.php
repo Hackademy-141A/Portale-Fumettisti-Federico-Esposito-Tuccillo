@@ -2,16 +2,19 @@
 
 <x-layout>
     <link rel="stylesheet" href="{{ asset('css/createprofile.css') }}">
-
+    
     @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
+        <div class="alert alert-danger" role="alert">
+            <ul class="list-unstyled">
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li class="">{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
     @endif
+
+<body>
+    
 
     <div class="containerv register-page">
         <div class="form-box">
@@ -46,7 +49,7 @@
             </div>
         </div>
     </div>
-
+</body>
     <script>
         document.getElementById('image').addEventListener('change', function(event) {
             const [file] = event.target.files;

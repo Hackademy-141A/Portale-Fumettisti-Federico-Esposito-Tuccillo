@@ -11,7 +11,7 @@
             background-repeat: no-repeat !important;
         }
     </style> --}}
-    <body class="body-welcome">
+    <body class="bodywelcome">
         <header class="text-center text-white py-4">
             <div class="container mt-5">
                 <h1 class="display-5">Benvenuto Fumettista</h1>
