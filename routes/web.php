@@ -40,11 +40,14 @@ Route::post('/profile', [ProfileController::class, 'store'])->name('profile.stor
 Route::get('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Elimina un profilo
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');                // Mostra un profilo specifico
 Route::get('/profile/utenti', [ProfileController::class, 'fumettisti'])->name('profile.fumettisti'); //? Mostra l'elenco degli utenti
+//Metodo di aggiornamento solo immagine
+Route::put('/profile/{id}/update-image', [ProfileController::class, 'updateImage'])->name('profile.updateImage');
  // Mostra l'elenco dei profilid
 //Rotta per la pagina di modifica password:
     Route::get('/profile/{id}/edit-password', [ProfileController::class, 'editPassword'])->name('profile.editPassword'); // Mostra il modulo di modifica della password
 
     Route::put('/profile/{id}/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password'); // Aggiorna la password
+
 
 
 

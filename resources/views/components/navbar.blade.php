@@ -1,18 +1,29 @@
 
 @csrf
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-        <!-- Nome del sito a sinistra -->
-        <a class="navbar-brand ms-3 nava" href="{{ route('home') }}">Fumettisti indipendenti</a>
-        <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-            Aggiunta la classe ms-3 per spostare il nome del sito completamente a sinistra -->
-            
-            <!-- Toggler per il menu responsivo -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Elementi della navbar -->
+<style>
+
+    .navbar{
+        background-color: #d0c9f8!important;
+        padding: 2px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+</style>
+<body>
+    
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid ">
+            <!-- Nome del sito a sinistra -->
+            <a class="navbar-brand ms-3 nava" href="{{ route('home') }}">Fumettisti indipendenti</a>
+            <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                Aggiunta la classe ms-3 per spostare il nome del sito completamente a sinistra -->
+                
+                <!-- Toggler per il menu responsivo -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <!-- Elementi della navbar -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <!-- Voci della navbar a sinistra (vuote nel tuo caso) -->
@@ -72,5 +83,6 @@
             </div>
         </div>
     </nav>
+</body>
     
     

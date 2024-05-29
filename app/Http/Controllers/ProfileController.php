@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use App\Http\Requests\ProfileStoreRequest;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -41,34 +42,59 @@ class ProfileController extends Controller
         
         //* Mostra la pagina di aggiornamento del profilo dell'utente loggato
         public function update(ProfileUpdateRequest $request, $user)
-        {
-            $profile = User::findOrFail($user);
-            
-            $data = [
-                'name' => $request->input('name'),
-                'username' => $request->input('username'),
-                'surname' => $request->input('surname'),
-                'phone' => $request->input('phone'),
-                'company_address' => $request->input('company_address'),
-                'short_description' => $request->input('short_description'),
-                'image' => $request->input('image'),
-                'email' => $request->input('email'),
-                'image' => $request->file('image')->store('public/images'),
-            ];
-            
-            // Controllo se è stato caricato un nuovo file immagine
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('public/images', $imageName); // Salva l'immagine nel percorso specificato
-                $data['image'] = 'images/' . $imageName; // Imposta il percorso dell'immagine nel database
-            }
-            
-            // Aggiorna il profilo con i nuovi dati
-            $profile->update($data);
-            
-            return redirect()->route('home')->with('success', 'Profilo aggiornato con successo!');
+{
+    $profile = User::findOrFail($user);
+
+    $data = [
+        'name' => $request->input('name'),
+        'username' => $request->input('username'),
+        'surname' => $request->input('surname'),
+        'phone' => $request->input('phone'),
+        'company_address' => $request->input('company_address'),
+        'short_description' => $request->input('short_description'),
+        'email' => $request->input('email'),
+    ];
+
+    // Controllo se è stato caricato un nuovo file immagine
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/profile_images', $imageName);
+        $data['image'] = 'profile_images/' . $imageName;
+    }
+
+    // Aggiorna il profilo con i nuovi dati
+    $profile->update($data);
+
+    return redirect()->route('home')->with('success', 'Profilo aggiornato con successo!');
+}
+        
+        public function updateImage(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+
+    $request->validate([
+        'image' => 'required|image|max:6144', // max 6MB
+    ]);
+
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($user->image) {
+            Storage::delete($user->image);
         }
+
+        // Store new image
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/profile_images', $imageName);
+
+        // Update user image path
+        $user->update(['image' => 'profile_images/' . $imageName]);
+    }
+
+    return redirect()->back()->with('message', 'Immagine del profilo aggiornata con successo');
+}
+        
         
         //* Funzione store per i profili nuovi
         public function store(ProfileStoreRequest $request, $user)
