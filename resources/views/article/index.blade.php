@@ -32,7 +32,7 @@
                             
                             img="{{$article->image}}"
                             
-                            writer="{{$article->user->name}}"
+                            writer="{{$article->user->name}}""
                             
                             hrefbyUser="{{route('article.byUser',['user'=>$article->user->id] )}}"
                             
