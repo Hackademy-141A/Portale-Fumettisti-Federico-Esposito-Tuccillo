@@ -42,4 +42,13 @@ class User extends Authenticatable
     public function articles(): HasMany{
         return $this->hasMany(Article::class, 'author_id');
     }
+
+    protected static function boot(){
+        parent::boot();
+        static::deleting(function ($user) {
+            $user->articles()->update([
+                'author_id' => null,
+            ]);
+        });
+    }
 }

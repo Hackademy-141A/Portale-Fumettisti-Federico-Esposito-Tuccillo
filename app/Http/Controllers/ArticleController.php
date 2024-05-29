@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleStoreRequet;
+use App\Http\Requests\ArticleUpdateRequest;
 
 class ArticleController extends Controller
 {
@@ -53,17 +54,9 @@ class ArticleController extends Controller
     }
     
     // Aggiorna un Articolo dell'utente loggato
-    public function update(Request $request, Article $article)
+    public function update(ArticleUpdateRequest $request, Article $article)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'subtitle' => 'nullable|string|max:255',
-            'article_description' => 'required|string',
-            'category_id' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
-            
-        ]);
+        //E ora sfruttiamo la ArticleUpdateRequest per validare i dati
         
         $article->update([
             'title' => $request->input('title'),

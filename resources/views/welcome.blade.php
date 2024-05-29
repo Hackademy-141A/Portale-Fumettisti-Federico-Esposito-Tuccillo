@@ -1,16 +1,11 @@
 <x-layout>
-    {{-- <style>
-        body{
-            margin-top:0;
-            background-image: url('{{ asset('images/test11.jpg') }}');
-            brightness: 10%!important;
-            background-color: rgba(255, 255, 255, 0.8); /* Imposta il colore di sfondo con un'opacità del 80% */
-            backdrop-filter: blur(5); /* Applica uno sfondo sfocato */
-            background-size: cover;
-            background-position: center !important;
-            background-repeat: no-repeat !important;
-        }
-    </style> --}}
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{session('message')}}
+    </div>
+    @endif
+    
+    
     <body class="bodywelcome">
         <header class="text-center text-white py-4">
             <div class="container mt-5">
