@@ -16,20 +16,21 @@
                     @method('PUT')
                     <!-- Form Group (current password)-->
                     <div class="mb-3">
-                        <label class="small mb-1" for="currentPassword">Password attuale</label>
-                        <input class="form-control" id="currentPassword" name="current_password" type="password" placeholder="Inserisci la password attuale" required>
+                        <label class="small mb-1" for="current_password">Password attuale</label>
+                        <input class="form-control" id="current_password" name="current_password" type="password" placeholder="Inserisci la password attuale" required>
                     </div>
                     <!-- Form Group (new password)-->
                     <div class="mb-3">
-                        <label class="small mb-1" for="newPassword">Nuova Password</label>
-                        <input class="form-control" id="newPassword" name="new_password" type="password" placeholder="Inserisci la nuova password" required>
+                        <label class="small mb-1" for="new_password">Nuova Password</label>
+                        <input class="form-control" id="new_password" name="new_password" type="password" placeholder="Inserisci la nuova password" required>
                     </div>
                     <!-- Form Group (confirm password)-->
                     <div class="mb-3">
-                        <label class="small mb-1" for="confirmPassword">Conferma Nuova Password</label>
-                        <input class="form-control" id="confirmPassword" name="new_password_confirmation" type="password" placeholder="Conferma la nuova password" required>
+                        <label class="small mb-1" for="confirm_password">Conferma Nuova Password</label>
+                        <input class="form-control" id="confirm_password" name="new_password_confirmation" type="password" placeholder="Conferma la nuova password" required>
                     </div>
                     <button class="btn btn-primary" type="submit">Salva</button>
+                    
                     @if (session('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}

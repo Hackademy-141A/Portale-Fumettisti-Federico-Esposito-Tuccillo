@@ -7,6 +7,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Http\Requests\ProfileStoreRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
@@ -15,7 +16,7 @@ class ProfileController extends Controller
     
     //* permetti solo a chi è loggato di accedere alla pagina
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
     }
     
     //* Mostra la pagina di index del profilo dell'utente loggato
@@ -70,15 +71,8 @@ class ProfileController extends Controller
         }
         
         //* Funzione store per i profili nuovi
-        public function store(Request $request, $user)
+        public function store(ProfileStoreRequest $request, $user)
         {
-            $request->validate([
-                'name' => 'required',
-                'phone' => 'nullable|alpha_num',
-                'company_address' => 'required',
-                'short_description' => 'required',
-                'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
             
             $profile = new User();
             $profile->name = $request->name;

@@ -14,7 +14,7 @@ class ArticleController extends Controller
     // Permetti solo agli utenti loggati di accedere alla pagina
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show', 'byUser','fumettisti');
+        $this->middleware('auth')->except('index','show', 'byUser', 'profile.show');
     }
 
         
