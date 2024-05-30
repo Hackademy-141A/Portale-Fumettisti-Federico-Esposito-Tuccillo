@@ -23,15 +23,12 @@ class Article extends Model
     
     // Definisci la relazione con l'autore
     public function author_id(): BelongsTo {
-        return $this->belongsTo(User::class, 'author_id')->withDefault([
-            'name' => 'Sconosciuto',
-        ]);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function user(): BelongsTo {
-        return $this->belongsTo(User::class, 'author_id')->withDefault([
-            'name' => 'Sconosciuto',
-        ]);
+        return $this->belongsTo(User::class, 'author_id');
+        
     }
     
     // Definisci la relazione con la categoria

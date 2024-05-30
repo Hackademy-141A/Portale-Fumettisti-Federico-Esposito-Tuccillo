@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ArticleStoreRequet;
 use App\Http\Requests\ArticleUpdateRequest;
 
@@ -66,6 +67,24 @@ class ArticleController extends Controller
             'image' => $request->file('image')->store('public/images'),
             
         ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($article->image) {
+                Storage::delete($article->image);
+            }
+            
+            // Store new image
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/article_images', $imageName);
+            
+            // Update user image path
+            $article->update(['image' => 'article_images/' . $imageName]);
+        }
+
+
+
         
         // Sincronizza i tag
         $tags = explode(',', $request->input('tags'));
@@ -99,9 +118,26 @@ class ArticleController extends Controller
             'article_description' => $request->input('article_description'),
             'category_id' => $request->input('category_id'),
             'author_id' => auth()->id(),
-            'image' => $request->file('image')->store('public/images'),
-            
+            'image' => $request->file('image')->store('public/images'), 
         ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($article->image) {
+                Storage::delete($article->image);
+            }
+            
+            // Store new image
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/article_images', $imageName);
+            
+            // Update user image path
+            $article->update(['image' => 'article_images/' . $imageName]);
+        }
+
+
+
         // Sincronizza i tag
         $tags = explode(',', $request->input('tags'));
         foreach ($tags as $i => $tag) {

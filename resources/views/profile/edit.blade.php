@@ -6,7 +6,7 @@
         {{ session('message') }}
     </div>
     @endif
-
+    
     <div class="container-xl px-4 mt-4">
         <h3 class="text-center">Ciao {{$user->name}} qui potrai modificare i tuoi dati personali:</h3>
         <!-- Account page navigation-->
@@ -24,7 +24,13 @@
                     <div class="card-header">Immagine Profilo:</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
-                        <img class="img-account-profile rounded-circle mb-4" id="profile-image-preview" src="{{ Storage::url($user->image ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png') }}" alt="Immagine utente">
+                        @if ($user->image)
+                        <img class="img-account-profile rounded-circle mb-4" id="profile-image-preview" src="{{ Storage::url($user->image) }}" alt="Immagine utente">
+                        @else
+                        <img class="img-account-profile rounded-circle mb-4" id="profile-image-preview" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png" alt="Immagine utente">
+                        @endif
+                        {{-- !? --}}
+                        {{--! bugged <img class="img-account-profile rounded-circle mb-4" id="profile-image-preview" src="{{ Storage::url($user->image ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png') }}" alt="Immagine utente"> --}}
                         <!-- Profile picture help block-->
                         <div class="small font-italic text-muted mb-4">Carica un'immagine, MAX: 6MB</div>
                         <!-- Profile picture upload button-->
@@ -86,7 +92,7 @@
             </div>
         </div>
     </div>
-
+    
     <script>
         function previewImage(event) {
             const reader = new FileReader();

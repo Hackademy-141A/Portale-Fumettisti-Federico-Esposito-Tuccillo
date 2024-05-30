@@ -8,7 +8,6 @@
 
 }
 
-
 body {
     padding: 0px!important;
     margin: 0; /* Aggiunto per rimuovere eventuali margini di default */
@@ -102,7 +101,7 @@ footer {
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 32px 24px 24px;
+    padding: 15px 24px 5px;
     gap: 16px;
     text-align: center;
 }

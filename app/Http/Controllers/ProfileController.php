@@ -106,14 +106,30 @@ class ProfileController extends Controller
             $profile->phone = $request->phone;
             $profile->company_address = $request->company_address;
             $profile->short_description = $request->short_description;
-            
-            // Controllo se è stato caricato un nuovo file immagine
+
+
             if ($request->hasFile('image')) {
+                // Delete old image if exists
+                if ($user->image) {
+                    Storage::delete($user->image);
+                }
+                
+                // Store new image
                 $image = $request->file('image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('public/images', $imageName);
-                $profile->image = 'images/' . $imageName;
+                $path = $image->storeAs('public/profile_images', $imageName);
+                
+                // Update user image path
+                $user->update(['image' => 'profile_images/' . $imageName]);
             }
+            
+            // Controllo se è stato caricato un nuovo file immagine
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+            //     $image->storeAs('public/images', $imageName);
+            //     $profile->image = 'images/' . $imageName;
+            // }
             
             $profile->save();
             

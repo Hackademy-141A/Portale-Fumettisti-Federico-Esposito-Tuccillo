@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('subtitle');
             $table->text('article_description');
             $table->string('image')->nullable();
-            $table->unsignedBigInteger('author_id')->nullable()->change();
+            $table->unsignedBigInteger('author_id')->nullable()->onDelete('SET NULL');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('SET NULL');
