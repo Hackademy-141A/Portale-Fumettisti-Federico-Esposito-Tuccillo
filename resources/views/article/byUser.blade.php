@@ -35,6 +35,7 @@
                 hrefShow="{{route('article.show', compact('article'))}}"
                 
                 href="{{route('article.show', compact('article', 'user'))}}"
+                profile="{{route('profile.user', 'user_id', compact('user'))}}"
                 />
             </div>
             @empty

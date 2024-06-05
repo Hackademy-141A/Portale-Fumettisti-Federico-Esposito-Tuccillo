@@ -76,13 +76,13 @@
                 @endforelse
                 <span>Pubblicato da: 
                     @if($writer)
-                        <a href="{{ $hrefbyUser }}" style="text-decoration: none;">{{ $writer }}</a>
+                        <a href="{{ $profile }}" style="text-decoration: none;">{{ $writer }}</a>
                     @else
                         Unknown Author
                     @endif
                 </span>
             </div>
-            <button id="btn" style="background-color: rgb(0, 140, 255);">
+            <button id="btnx" style="background-color: rgb(0, 140, 255);">
                 <a href="{{ $hrefShow }}" class="leggianchorindex">Vai al dettaglio</a>
             </button>
     
@@ -106,7 +106,7 @@
                     text-decoration: none;
                     color: whitesmoke;
                 }
-                #btn:hover,
+                /* #btnx:hover,
                 :focus {
                     color: #ffffff;
                     background: #008cff;
@@ -114,7 +114,7 @@
                     text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
                     box-shadow: 0 0 5px #008cff, 0 0 20px #008cff, 0 0 50px #008cff,
                     0 0 100px #008cff;
-                }
+                } */
             </style>        
         </div>
     </div>

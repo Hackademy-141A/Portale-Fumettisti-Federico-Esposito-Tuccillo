@@ -2,7 +2,7 @@
 @import 'bootstrap';
 
 * {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Pacifico', sans-serif;
 
     box-sizing: border-box;
 
@@ -29,35 +29,14 @@ body {
     height: 1200px;
 }
 
-.navbar {
-    background-color: #45425A !important;
-    z-index: 1000; /* Imposta il valore di z-index per far sì che la navbar sia sopra gli altri elementi */
-    position: fixed; /* Fissa la navbar in cima alla pagina */
-    width: 100%; /* Assicura che la navbar abbia la larghezza completa */
-    top: 0; /* Posiziona la navbar in alto */
-}
 
-.centernav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.nava {
-    color: white;
-}
 
-.nava:hover {
-    color: blue;
-}
 
-.navcustm {
-    background-color: #586BA4;
-    border: #000000;
-    border-radius: 2px;
-    box-sizing: border-box;
-    box-shadow: 0px 0px 10px 3px #ffffff;
-}
+
+
+
+
 
 @keyframes rainbow {
     0% { color: red; }

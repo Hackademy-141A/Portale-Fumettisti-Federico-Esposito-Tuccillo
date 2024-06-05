@@ -1,12 +1,13 @@
 <x-layout>
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{session('message')}}
-    </div>
-    @endif
+    
     
     
     <body class="bodywelcome">
+        @if (session('message'))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+        @endif
         <header class="text-center text-white py-4">
             <div class="container mt-5">
                 <h1 class="display-5">Benvenuto Fumettista</h1>

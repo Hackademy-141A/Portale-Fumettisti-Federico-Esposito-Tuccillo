@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
+use App\Observers\UserDeletingObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::all();
             View::share('categories', $categories);
         };
+
+        User::observe(UserDeletingObserver::class);
         //Adesso è stata fatta la registrazione di una view globale, quindi è possibile utilizzarla in qualsiasi view del progetto
         
     }

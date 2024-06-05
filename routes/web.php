@@ -32,14 +32,14 @@ Route::prefix('article')->group(function(){
 
 
 //!Rotte per la gestione dei profili:
-// Route::get('/create-profile', [ProfileController::class, 'create'])->name('profile.create'); // Crea un nuovo profilo
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index'); // Mostra l'elenco dei profili
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit'); // Mostra il modulo di modifica del profilo
 Route::put('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update'); // Aggiorna un profilo esistente
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store'); // Salva un nuovo profilo
 Route::delete('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name('profile.destroy'); // Elimina un profilo
-Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');                // Mostra un profilo specifico
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');                //! Mostra un profilo specifico
 Route::get('/profile/utenti', [ProfileController::class, 'fumettisti'])->name('profile.fumettisti'); //? Mostra l'elenco degli utenti
+// Route::get('/profile/{$id}/details', [ProfileController::class, 'utente'])->name('profile.utente');
 //Metodo di aggiornamento solo immagine
 Route::put('/profile/{id}/update-image', [ProfileController::class, 'updateImage'])->name('profile.updateImage');
  // Mostra l'elenco dei profilid
@@ -47,6 +47,7 @@ Route::put('/profile/{id}/update-image', [ProfileController::class, 'updateImage
     Route::get('/profile/{id}/edit-password', [ProfileController::class, 'editPassword'])->name('profile.editPassword'); // Mostra il modulo di modifica della password
 
     Route::put('/profile/{id}/update-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password'); // Aggiorna la password
+    Route::get('/profile/{id}/user', [ProfileController::class, 'user'])->name('profile.user'); // Mostra il profilo dell'utente che ha creato quell'articolo 
 
 
 

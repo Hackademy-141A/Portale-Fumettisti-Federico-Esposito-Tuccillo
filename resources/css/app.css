@@ -1,11 +1,11 @@
 @import 'bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&family=Quicksand:wght@300..700&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
-* {
-    font-family: 'Electrolize';
-    
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poetsen+One&family=Quicksand:wght@300..700&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+
+body{
+    margin-top: 80px!important;
 }
-
-
 
 
 .imgformcreate {
@@ -14,8 +14,9 @@
 }
 
 .bodywelcome{
-    color: red;
-    background-color: #0147b1;
+    color: white;
+    background-color: #8772ff;
+    margin-top: 20px;
 }
 
 .body-welcome {
@@ -26,6 +27,7 @@
 
 .navbar {
     background-color: #d4d4d4 !important;
+    ;
 }
 
 .centernav {

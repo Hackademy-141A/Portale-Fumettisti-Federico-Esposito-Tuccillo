@@ -1,43 +1,33 @@
 <x-layout>
-    
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
-
+<div class="container-fluid mt-5">
 
     
-
-
-
-        <div class="container mt-5">
-            <div class="row text-center">
-                <div class="col-12">
-                    <h1 class="display-1">Tutti i Fumettisti</h1>
-                    <div class="container">
-                        <div class="row">
-                            @forelse ($users as $user)
-                            <div class="col-12 col-md-3 mb-5">
-                                <x-authorcard 
-                                username="{{ $user->username }}"
-                                name="{{ $user->name }}"
-                                bio="{{ $user->short_description }}"
-                                img="{{ $user->image }}"
-                                phone="{{ $user->phone }}"
-                                hrefbyUser="{{ route('article.byUser',['user'=>$user->id] ) }}"
-                                />
-                            </div>
-                            @empty
-                            <div class="col-12">
-                                <p>Non ci sono profili disponibili...</p>
-                            </div>
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
+    
+    <div class="container col-12 col-md-4 mt-5">
+        
+        <div class="card">
+            
+            <img src="{{ $user->img }}" class="card-img-top" alt="Profile Image">
+            
+            <div class="card-body">
+                
+                <h5 class="card-title">{{ $user->artist_name }}</h5>
+                
+                <p class="card-text">Phone: {{ $user->phone }}</p>
+                
+                <p class="card-text">Address: {{ $user->company_address }}</p>
+                
+                <p class="card-text">{{ $user->short_description }}</p>
+                
+                <a href="{{ route('profile.utente','id', $user->id) }}" class="btn btn-primary">Mostra Profilo</a>
+                
             </div>
+            
         </div>
         
-        
+    </div>
+    
+</div>
+    
+
 </x-layout>

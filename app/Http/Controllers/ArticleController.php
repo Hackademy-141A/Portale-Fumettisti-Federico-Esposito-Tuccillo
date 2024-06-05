@@ -18,15 +18,16 @@ class ArticleController extends Controller
     {
         $this->middleware('auth')->except('index','show', 'byUser', 'profile.show');
     }
-
-        
-//Funzione per mostrare agli utenti ospiti e non loggati tutti i profili degli utenti che hanno inserito articoli
-
-
+    
+    
+    //Funzione per mostrare agli utenti ospiti e non loggati tutti i profili degli utenti che hanno inserito articoli
+    
+    
     // Mostra la pagina di index degli Articoli dell'utente loggato
     public function index(Request $request)
     {
         $articles = Article::all();
+        
         // Carica gli articoli con la relazione 'author'
         // $articles = Article::with('author')->get();
         return view('article.index', compact( 'articles'));
@@ -56,18 +57,29 @@ class ArticleController extends Controller
     
     // Aggiorna un Articolo dell'utente loggato
     public function update(ArticleUpdateRequest $request, Article $article)
-    {
-        //E ora sfruttiamo la ArticleUpdateRequest per validare i dati
-        
-        $article->update([
-            'title' => $request->input('title'),
-            'subtitle' => $request->input('subtitle'),
-            'article_description' => $request->input('article_description'),
-            'category_id' => $request->input('category_id'),
-            'image' => $request->file('image')->store('public/images'),
-            
-        ]);
+{
+    // E ora sfruttiamo la ArticleUpdateRequest per validare i dati
 
+    // Verifica se un nuovo file immagine è stato inviato
+    if ($request->hasFile('img')) {
+        // Elimina l'immagine precedente se esiste
+        if ($article->image) {
+            Storage::delete($article->image);
+        }
+        
+        // Carica e memorizza la nuova immagine
+        $article->image = $request->file('img')->store('public/images');
+    }
+
+    $article->update([
+        'title' => $request->input('title'),
+        'subtitle' => $request->input('subtitle'),
+        'article_description' => $request->input('article_description'),
+        'category_id' => $request->input('category_id'),
+        'comic_number' => $request->input('comic_number'),
+        'comic_year' => $request->input('comic_year'),
+    ]);
+        
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($article->image) {
@@ -82,9 +94,9 @@ class ArticleController extends Controller
             // Update user image path
             $article->update(['image' => 'article_images/' . $imageName]);
         }
-
-
-
+        
+        
+        
         
         // Sincronizza i tag
         $tags = explode(',', $request->input('tags'));
@@ -120,7 +132,7 @@ class ArticleController extends Controller
             'author_id' => auth()->id(),
             'image' => $request->file('image')->store('public/images'), 
         ]);
-
+        
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($article->image) {
@@ -135,9 +147,9 @@ class ArticleController extends Controller
             // Update user image path
             $article->update(['image' => 'article_images/' . $imageName]);
         }
-
-
-
+        
+        
+        
         // Sincronizza i tag
         $tags = explode(',', $request->input('tags'));
         foreach ($tags as $i => $tag) {
@@ -174,6 +186,9 @@ class ArticleController extends Controller
     }
     
     public function byUser(User $user){
+        if (!$user){
+            return redirect()->back()->with('error', 'Utente non disponibile.');
+        }
         //Funzione per mostrare gli articoli dell'utente loggato
         $articles = Article::where('author_id', $user->id)->get();
         //Vista da mostrare

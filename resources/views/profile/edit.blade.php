@@ -1,20 +1,24 @@
 <x-layout style="/css/edit-profile.css">
+    @auth
+        
     <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    @if (session('message'))
-    <div class="alert alert-success">
-        {{ session('message') }}
-    </div>
-    @endif
     
-    <div class="container-xl px-4 mt-4">
-        <h3 class="text-center">Ciao {{$user->name}} qui potrai modificare i tuoi dati personali:</h3>
-        <!-- Account page navigation-->
-        <nav class="nav nav-borders">
-            <a class="nav-link active ms-0" href="#" target="__blank">Profilo</a>
-            <a class="nav-link" href="{{ route('profile.editPassword', 'id') }}" target="__blank">Sicurezza</a>
-            <a class="nav-link" href="#" target="__blank"></a>
-            <a class="nav-link" href="#" target="__blank"></a>
+    <body>
+        
+        <div class="container-xl px-4 mt-4">
+            @if (session('message'))
+            <div class="alert alert-warning">
+                {{ session('message') }}
+            </div>
+            @endif
+            <h3 class="text-center">Ciao {{$user->name}} qui potrai modificare i tuoi dati personali:</h3>
+            <!-- Account page navigation-->
+            <nav class="nav nav-borders">
+                <a class="nav-link active ms-0" href="#" target="__blank">Profilo</a>
+                <a class="nav-link" href="{{ route('profile.editPassword', 'id') }}" target="__blank">Sicurezza</a>
+                <a class="nav-link" href="#" target="__blank"></a>
+                <a class="nav-link" href="#" target="__blank"></a>
         </nav>
         <hr class="mt-0 mb-4">
         <div class="row">
@@ -92,7 +96,9 @@
             </div>
         </div>
     </div>
+</body>
     
+    @endauth
     <script>
         function previewImage(event) {
             const reader = new FileReader();
@@ -102,5 +108,5 @@
             };
             reader.readAsDataURL(event.target.files[0]);
         }
-    </script>
+        </script>
 </x-layout>

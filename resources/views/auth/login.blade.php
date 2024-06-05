@@ -1,61 +1,65 @@
 <x-layout>
     <style>
-        body{
+        body {
             background-color: rgb(52, 112, 146);
-            /* Aggiungiamo spazio sopra al testo */
             margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .form-control{
-            border-radius: 20px;
-            border: 1px solid #fff;
+        .form-container {
             background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            padding: 20px;
+            animation: fadeInDown 1s ease-out;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-        {{--! Form --}}
-        <div class="container">
-            <div class="mx-auto col-5 text-center">
-                <div class="form-control">
-                    
-                    <form method="POST" action="{{route('login') }}" class="col-10 mx-auto mb-3 p-2 rounded">
-                        <h3>Benvenuto Utente</h3>
-                        <p>Accedi con i tuoi dati</p>
-                        
-                        @csrf
-                        
-                        
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">E-Mail</label>
-                            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="e-Mail">
-                            
-                        </div>
-                        
-                        <div class=" mb-3">
-                            <label for="password">Password</label>
-                            <input name="password" type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        
-                        
-                        
-                        <button type="submit" class="btn btn-primary">Invia</button>
-                    </form>
-                    
-                    <a href="{{route('register')}}">Se non sei ancora registrato clicca qui!</a>
-                    
-                </div>
+    <div class="form-container">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <h3 class="text-center mb-4">Benvenuto Utente</h3>
+            <p class="text-center mb-4">Accedi con i tuoi dati</p>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-Mail</label>
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-Mail">
             </div>
-        </div>
-
-                </x-layout>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Invia</button>
+            </div>
+        </form>
+        <p class="text-center mt-3">Se non sei ancora registrato <a href="{{ route('register') }}">clicca qui</a></p>
+    </div>
+</x-layout>

@@ -29,7 +29,7 @@
                         </div>
                         <button class="btn btn-primary" type="submit">Salva</button>
                     </form>
-
+<div class="p-2"></div>
                     {{-- Ora form per l'eliminazione dell'account --}}
                     <form action="{{ route('profile.destroy', Auth::user()->id) }}" method="POST">
                         @csrf
