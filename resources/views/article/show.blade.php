@@ -66,11 +66,18 @@
         
         .btn-container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
             margin-top: 20px;
         }
-        
+
+        .btn-container form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
         .btn {
             padding: 12px 24px;
             text-transform: uppercase;
@@ -123,20 +130,22 @@
             </form>
             @endif
             @endauth
-            <div class="container text-center col-md-3">
-                <h5 class="display-6" style="font-size: 30px">Sezione Revisore</h5>
-                @if (Auth::user() && Auth::user()->is_revisor)
-                <form action="{{route('revisor.accept', ['article' => $article->id], compact('article')) }}" method="POST">
-                    @csrf 
-                    <button type="submit" class="btn btn-Warning">Accetta Articolo</button>
-                </form>
-                <form action="{{route('revisor.reject', ['article' => $article->id], compact('article')) }}" method="POST">
-                    @csrf
-                
-                <button type="submit" class="btn btn-danger">Rifiuta Articolo</button>
-                </form>
-                @endif
+            <hr>
+            <div class="container d-flex-column gap-4 text-center col-md-3">
+                <h5 class="display-6" style="font-size: 30px;">Sezione Revisore</h5>
+                <div class="btn-container">
+                    @if (auth()->user() && auth()->user()->is_revisor)
+                    <form action="{{ route('revisor.accept', ['article' => $article->id]) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-warning">Accetta Articolo</button>
+                    </form>
+                    <form action="{{ route('revisor.reject', ['article' => $article->id]) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger">Rifiuta Articolo</button>
+                    </form>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
-</x-layout>
+    </x-layout>
+    

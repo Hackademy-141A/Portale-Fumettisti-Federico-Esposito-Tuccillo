@@ -28,5 +28,13 @@
             </div>
             
         </section>
+
+        <div class="container-fluid py-5 mt-5 text-center text-white">
+            <div class="row text-center ">
+                <div class="col-12">
+                    <h1>Questi sono Tutti i Nostri Fumetti</h1>
+                </div>
+            </div>
+        </div>
     </body>
 </x-layout>

@@ -42,12 +42,13 @@
         }
         
         .dropdown-item {
-            color: grey !important;
+            font-size: 25px
+            color: rgb(83, 83, 83) ;
             transition: color 0.3s;
         }
         
         .dropdown-item:hover {
-            color: #555 !important;
+            color: #888389 !important;
             background-color: transparent !important;
         }
         
@@ -106,15 +107,16 @@
                             <li>
                                 @auth
                                     @if (Auth::user()->is_admin)
-                                        <a href="{{route('admin.dashboard')}}">Dashboard</a>
+                                        <a class="dropdown-item" href="{{route('admin.dashboard')}}">Admim Dashboard</a>
                                     @endif
                                 @endauth
-
+                                <li><hr class="dropdown-divider"></li>
                                 @auth
                                     @if (Auth::user()->is_revisor)
-                                    <a href="{{route('revisor.dashboard')}}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{route('revisor.dashboard')}}">Revisor Dashboard</a>
                                     @endif
                                 @endauth
+                                <li><hr class="dropdown-divider"></li>
                                 <form class="text-center" method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button class="btn btn-danger" type="submit">Logout!</button>

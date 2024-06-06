@@ -18,6 +18,7 @@ class PublicController extends Controller
     }
     
     public function home(){
+        //funzione per mostrare gli articoli sulla pagina welcome
         $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
         return view('welcome', compact('articles'));
     }
