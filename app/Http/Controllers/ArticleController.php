@@ -78,6 +78,7 @@ class ArticleController extends Controller
         'category_id' => $request->input('category_id'),
         'comic_number' => $request->input('comic_number'),
         'comic_year' => $request->input('comic_year'),
+        
     ]);
         
         if ($request->hasFile('image')) {
@@ -131,6 +132,9 @@ class ArticleController extends Controller
             'category_id' => $request->input('category_id'),
             'author_id' => auth()->id(),
             'image' => $request->file('image')->store('public/images'), 
+            'comic_number' => $request->input('comic_number'),
+            'comic_year' => $request->input('comic_year'),
+            'is_accepted' => false,
         ]);
         
         if ($request->hasFile('image')) {

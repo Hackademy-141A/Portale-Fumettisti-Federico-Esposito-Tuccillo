@@ -123,6 +123,20 @@
             </form>
             @endif
             @endauth
+            <div class="container text-center col-md-3">
+                <h5 class="display-6" style="font-size: 30px">Sezione Revisore</h5>
+                @if (Auth::user() && Auth::user()->is_revisor)
+                <form action="{{route('revisor.accept', ['article' => $article->id], compact('article')) }}" method="POST">
+                    @csrf 
+                    <button type="submit" class="btn btn-Warning">Accetta Articolo</button>
+                </form>
+                <form action="{{route('revisor.reject', ['article' => $article->id], compact('article')) }}" method="POST">
+                    @csrf
+                
+                <button type="submit" class="btn btn-danger">Rifiuta Articolo</button>
+                </form>
+                @endif
+            </div>
         </div>
     </div>
 </x-layout>

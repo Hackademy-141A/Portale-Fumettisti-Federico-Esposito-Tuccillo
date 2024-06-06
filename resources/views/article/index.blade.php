@@ -6,7 +6,7 @@
             
             background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
             background-size: cover;
-            animation: slidein 15s alternate infinite forwards;
+            animation: slidein ss alternate infinite forwards;
         }
         
         @keyframes slidein {
@@ -18,7 +18,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
+            position: absolute;
             margin: auto;
             top: 0;
             right: 0;

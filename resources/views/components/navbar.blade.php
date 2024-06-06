@@ -104,6 +104,17 @@
                             <li><a class="dropdown-item" href="{{route('profile.edit', Auth::user()->id)}}">Impostazioni</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
+                                @auth
+                                    @if (Auth::user()->is_admin)
+                                        <a href="{{route('admin.dashboard')}}">Dashboard</a>
+                                    @endif
+                                @endauth
+
+                                @auth
+                                    @if (Auth::user()->is_revisor)
+                                    <a href="{{route('revisor.dashboard')}}">Dashboard</a>
+                                    @endif
+                                @endauth
                                 <form class="text-center" method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button class="btn btn-danger" type="submit">Logout!</button>

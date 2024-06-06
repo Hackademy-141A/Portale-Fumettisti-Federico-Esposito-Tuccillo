@@ -30,6 +30,9 @@ class User extends Authenticatable
         'x',
         'image',
         'password',
+        'is_admin',
+        'is_revisor',
+        'is_writer',
     ];
     
     protected $hidden = [

@@ -19,6 +19,7 @@ class Article extends Model
         'author_id', // Modifica il nome della colonna per l'ID dell'autore
         'category_id', // Modifica il nome della colonna per l'ID della categoria
         'image', //Immagine del fumetto
+        'is_accepted', 
     ];
     
     // Definisci la relazione con l'autore
