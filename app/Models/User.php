@@ -43,6 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
+        'is_revisor' => 'boolean',
+        'is_writer' => 'boolean',
+        'is_accepted' => 'boolean',
     ];
     
     //! Definisci la relazione con gli articoli

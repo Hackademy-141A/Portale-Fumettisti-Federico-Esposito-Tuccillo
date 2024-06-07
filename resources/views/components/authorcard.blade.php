@@ -1,13 +1,11 @@
 <div class="card mb-4" style="width: 18rem;">
-    <img class="card-img-top" src="{{ Storage::url($img) }}" alt="Card image cap">
+    <img class="card-img-top" src="{{ Storage::url($img) }}" alt="Immagine di {{ $name }}">
     <div class="card-body">
         <h4 class="card-title">{{ $username }}</h4>
         <h5 class="card-text">{{ $phone }}</h5>
-        <p class="card-text">{{ Str::limit($bio, 10) }}</p>
+        <p class="card-text">{{ Str::limit($bio, 50) }}</p>
+        <a href="{{ $hrefProfile }}" class="btn btn-primary">Vai al profilo</a>
     </div>
-    <button id="btn" style="background-color: rgb(0, 140, 255);">
-        <a href="{{$hrefProfile}}" class="leggianchorindex">Vai al profilo</a>
-    </button>
 </div>
 
 <style>

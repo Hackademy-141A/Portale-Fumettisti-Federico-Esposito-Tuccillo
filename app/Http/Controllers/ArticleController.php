@@ -26,7 +26,7 @@ class ArticleController extends Controller
     // Mostra la pagina di index degli Articoli dell'utente loggato
     public function index(Request $request)
     {
-        $articles = Article::all();
+        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->paginate(10);
         
         // Carica gli articoli con la relazione 'author'
         // $articles = Article::with('author')->get();
@@ -134,7 +134,7 @@ class ArticleController extends Controller
             'image' => $request->file('image')->store('public/images'), 
             'comic_number' => $request->input('comic_number'),
             'comic_year' => $request->input('comic_year'),
-            'is_accepted' => false,
+            'is_accepted' => NULL,
         ]);
         
         if ($request->hasFile('image')) {

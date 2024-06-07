@@ -1,6 +1,6 @@
-@if ($roleRequests->isEmpty())
+{{-- @if ($roleRequests->isEmpty())
     <p>Non Ci sono Notifiche!</p>
-    @else
+    @else --}}
     
     
     <table class="table table-striped table-hover border">
@@ -49,5 +49,5 @@
             @endforeach
         </tbody>
     </table>
-    @endif
+    {{-- @endif --}}
     

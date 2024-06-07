@@ -3,27 +3,16 @@
 namespace Database\Seeders;
 
 use App\Models\Article;
-use App\Models\Riviste;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class RivisteSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     /**
     * Run the database seeds.
     */
-    public function run()
+    public function run(): void
     {
-        Riviste::create([
-            'nome' => 'Horror',
-            'nazione' => 'Italia',
-        ]);
-        
-        Riviste::create([
-            'nome' => 'Marvel Comics',
-            'nazione' => 'US',
-        ]);
-        
         Article::create([
             'title' => 'LA TUA CANZONE',
             'subtitle' => 'COEZ',
@@ -34,7 +23,7 @@ class RivisteSeeder extends Seeder
             'category_id' => 1,
             //ORA INSERIAMO L'IMMAGINE presente sul nostro pc
             'image' => 'images/1717065933.jpg',
-            'is_accepted '=> true,
+            
         ]);
         
         Article::create([
@@ -47,7 +36,7 @@ class RivisteSeeder extends Seeder
             'category_id' => 1,
             //ORA INSERIAMO L'IMMAGINE presente sul nostro pc
             'image' => 'images/1716902647.jpg',
-            'is_accepted '=> true,
+            
         ]);
         
         
@@ -61,9 +50,7 @@ class RivisteSeeder extends Seeder
             'category_id' => 1,
             //ORA INSERIAMO L'IMMAGINE presente sul nostro pc
             'image' => 'images/1716582302.jpg',
-            'is_accepted '=> true,
+            
         ]);
-        
-        // Aggiungi altre riviste come necessario...
     }
 }

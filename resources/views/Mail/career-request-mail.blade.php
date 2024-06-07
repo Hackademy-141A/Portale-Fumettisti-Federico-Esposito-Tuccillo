@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Abbiamo Ricevuto!</h1>
+    <h1>Nuovo Messaggio Ricevuto!</h1>
     <h4>Richiesta per il ruolo di {{$info['role']}}</h4>
     <p>Ricevuta da: {{$info['email']}} </p>
     <h4>Messaggio:</h4>

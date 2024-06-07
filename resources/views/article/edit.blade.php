@@ -119,8 +119,8 @@
                         {{-- Immagine --}}
                         <div class="mb-3">
                             <label for="img" class="form-label">Immagine</label>
-                            <input type="file" class="form-control" id="img" name="img"
-                            onchange="previewImage()">
+                            <input type="file"  class="form-control" id="img" name="img"
+                            onchange="previewImage()" accept="image/png, image/jpeg">
                         </div>
                         
                         {{-- Categoria --}}
