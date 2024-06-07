@@ -133,6 +133,22 @@
             
             <hr>
             @if (auth()->user() && auth()->user()->is_revisor)
+            @if (auth()->user() && auth()->user()->is_revisor && $article->is_accepted = 1)
+            <div class="container d-flex-column gap-4 text-center col-md-3">
+                <h5 class="display-6">Sezione Revisor</h5>
+                <div class="btn-container">
+                    <form action="{{ route('revisor.undo', ['article' => $article->id]) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger">Riporta in revisione</button>
+                    </form>
+                </div>
+
+                
+            </div>
+        
+            
+            </div>
+            @else
             <div class="container d-flex-column gap-4 text-center col-md-3">
                 
                 <h5 class="display-6" style="font-size: 30px;">Sezione Revisore</h5>
@@ -145,6 +161,7 @@
                         @csrf
                         <button class="btn btn-danger">Rifiuta Articolo</button>
                     </form>
+                    @endif
                     @endif
                 </div>
             </div>

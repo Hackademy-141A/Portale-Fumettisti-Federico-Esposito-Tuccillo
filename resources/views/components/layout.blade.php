@@ -41,7 +41,7 @@
     {{--? Footer Sticky Bottom delle pagine.  --}}
     
     
-    <x-footer /> 
+    {{-- <x-footer />  --}}
     
     <script>
         document.addEventListener('DOMContentLoaded', function () {
