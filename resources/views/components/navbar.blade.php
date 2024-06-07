@@ -7,13 +7,19 @@
     <title>Navbar Customization</title>
     <style>
         /* Navbar Styles */
+        .centernav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
         .navbar {
-            background-color: #aea0ff !important;
+            background-color: #6246ff !important;
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             font-family: 'Pacifico', cursive!important;
-            font-size: 30px;
+            font-size: 25px;
+            text-shadow: #ffffff 2px 2px 6px;
         }
         
         .navbar-brand {
@@ -24,7 +30,8 @@
         }
         
         .navbar-brand:hover {
-            color: #ffcc00 !important;
+            color: #ffd500 !important;
+            text-shadow: #ffffff 2px 2px 6px;
         }
         
         .navbar-nav .nav-link {
@@ -34,7 +41,7 @@
         }
         
         .navbar-nav .nav-link:hover {
-            color: #ffcc00 !important;
+            color: #ff0000 !important;
         }
         
         .dropdown-menu {

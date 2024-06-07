@@ -21,8 +21,8 @@
                 <form class="form " action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
-                    <span class="title">Registrati</span>
-                    <span class="subtitle">Crea un account gratis con la tua email.</span>
+                    <span class="title text-center">Registrati</span>
+                    <span class="subtitle text-center">Crea un account gratis con la tua email.</span>
                     
                     <div class="form-container">
                         <input type="text" class="input" placeholder="Username" name="username" id="username" value="{{ old('username') }}">

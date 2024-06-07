@@ -3,52 +3,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poetsen+One&family=Quicksand:wght@300..700&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
 
-body{
-    margin-top: 80px!important;
+html , body{
+    margin-top: 80px;
 }
 
 
-.imgformcreate {
+
+/* .imgformcreate {
     background-size: cover !important;
     background-position: center;
-}
+} */
 
-.bodywelcome{
+/* .bodywelcome{
     color: white;
     background-color: #8772ff;
     margin-top: 20px;
-}
+} */
 
-.body-welcome {
+/* .body-welcome {
     color: #ffffff;
     background-color: #000000;
-    
-}
-
+     */
+/* } */
+/* 
 .navbar {
     background-color: #d4d4d4 !important;
-    ;
-}
+    
+} */
 
-.centernav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.nava {
+
+/* .nava {
     color: rgb(18, 18, 143);
-}
+} */
 
-.nava:hover {
-    color: blue;
-}
 
-.navcustm {
+/* .navcustm {
     background-color: #ffffff;
     border: #000000;
     border-radius: 2px;
     box-sizing: border-box;
     box-shadow: 0px 0px 10px 3px #ffffff;
-} 
+}  */
 

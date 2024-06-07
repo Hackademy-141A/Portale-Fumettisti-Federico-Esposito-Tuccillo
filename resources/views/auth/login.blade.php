@@ -1,12 +1,12 @@
 <x-layout>
     <style>
         body {
-            background-color: rgb(52, 112, 146);
-            margin-top: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: rgb(52, 112, 146)!important;
+            margin-top: 100px!important;
+            display: flex!important;
+            justify-content: center!important;
+            align-items: center!important;
+            height: 100vh!important;
         }
 
         .form-container {

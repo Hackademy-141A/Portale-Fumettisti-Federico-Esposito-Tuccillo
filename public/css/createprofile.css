@@ -2,105 +2,48 @@
 @import 'bootstrap';
 
 * {
-    font-family: 'Pacifico', sans-serif;
-
+    font-family: 'Electrolize', cursive;
     box-sizing: border-box;
-
 }
 
 body {
-    padding: 0px!important;
-    margin: 0; /* Aggiunto per rimuovere eventuali margini di default */
-    background-repeat: no-repeat !important;
-    background-size: contain !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    overflow: hidden !important;
+    padding: 0;
+    margin: 0;
+    background-color: #005ce6;
 }
 
-.imgformcreate {
-    background-size: cover !important;
-    background-position: center;
+.register-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.body-welcome {
-    color: white;
-    background-color: #131B23;
-    height: 1200px;
-}
-
-
-
-
-
-
-
-
-
-
-@keyframes rainbow {
-    0% { color: red; }
-    20% { color: orange; }
-    40% { color: yellow; }
-    60% { color: green; }
-    80% { color: blue; }
-    100% { color: violet; }
-}
-
-.rainbow-text {
-    animation: rainbow 3s infinite;
-    animation-play-state: paused;
-    cursor: pointer;
-}
-
-.rainbow-text:hover {
-    animation-play-state: running;
-}
-
-footer {
-    font-size: small;
-    color: white !important;
-    background-color: #262626;
-    margin-top: -7cm !important;
-    margin-bottom: -0.5cm;
-}
-
-/* Stili specifici per la pagina di registrazione */
 .form-box {
     max-width: 600px;
     background: #f1f7fe;
     overflow: hidden;
     border-radius: 16px;
     color: #010101;
-    margin: auto;
-    margin-top: 100px; /* Aggiunto per spaziare il form dalla navbar */
-}
-
-.form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 15px 24px 5px;
-    gap: 16px;
-    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
 .title {
     font-weight: bold;
     font-size: 1.6rem;
+    margin-bottom: 10px!important;
 }
 
 .subtitle {
     font-size: 1rem;
     color: #666;
+    margin-bottom: 20px!important;
 }
 
-.form-container {
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #fff;
-    margin: 1rem 0 .5rem;
-    width: 100%;
+.form {
+    display: flex;
+    flex-direction: column;
 }
 
 .input {
@@ -108,28 +51,19 @@ footer {
     border: 0;
     outline: 0;
     height: 40px;
-    width: 100%;
-    border-bottom: 1px solid #eee;
-    font-size: .9rem;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.9rem;
     padding: 8px 15px;
+    margin-bottom: 20px;
 }
 
-.form-section {
-    padding: 16px;
-    font-size: .85rem;
-    background-color: #e0ecfb;
-    box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+.input-group {
+    display: flex;
+    justify-content: space-between;
 }
 
-.form-section a {
-    font-weight: bold;
-    color: #0066ff;
-    transition: color .3s ease;
-}
-
-.form-section a:hover {
-    color: #005ce6;
-    text-decoration: underline;
+.input-group .input {
+    width: calc(50% - 5px);
 }
 
 .form button {
@@ -141,21 +75,34 @@ footer {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color .3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .form button:hover {
     background-color: #005ce6;
 }
 
-.profile-image-preview {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 16px;
+.form-section {
+    margin-top: 20px;
+    text-align: center;
 }
 
-body{
-    background-color: #005ce6;
+.form-section a {
+    font-weight: bold;
+    color: #0066ff;
+    transition: color 0.3s ease;
+}
+
+.form-section a:hover {
+    color: #005ce6;
+    text-decoration: underline;
+}
+
+
+.form-container {
+    
+    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

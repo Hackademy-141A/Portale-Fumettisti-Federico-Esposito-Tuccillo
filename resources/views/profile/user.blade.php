@@ -17,9 +17,11 @@
                         <div class="card-body">
                             <h4 class="card-title">Informazioni di contatto</h4>
                             <ul class="list-unstyled">
-                                <li><strong>Email:</strong> {{ $user->email }}</li>
-                                <li><strong>Telefono:</strong> {{ $user->phone }}</li>
-                                <li><strong>Indirizzo Aziendale:</strong> {{ $user->company_address }}</li>
+                                <li><strong style="color: red;">Username: </strong> {{$user->username}} </li>
+                                <li><strong style="color: red;">Nome: </strong>{{$user->name}}</li>
+                                <li><strong style="color: red;">Indirizzo Aziendale:</strong> {{ $user->company_address }}</li>
+                                <li><strong style="color: red;">Email:</strong> {{ $user->email }}</li>
+                                <li><strong style="color: red;">Telefono:</strong> {{ $user->phone }}</li>
                             </ul>
                             <hr>
                             <h4 class="card-title">Social Media</h4>

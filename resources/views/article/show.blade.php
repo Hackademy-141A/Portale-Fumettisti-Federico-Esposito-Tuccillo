@@ -52,7 +52,7 @@
         .article-img {
             width: 100%;
             max-height: 400px;
-            object-fit: cover;
+            object-fit:scale-down;
             border-radius: 12px;
             margin-bottom: 20px;
         }
@@ -71,13 +71,13 @@
             gap: 10px;
             margin-top: 20px;
         }
-
+        
         .btn-container form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
         .btn {
             padding: 12px 24px;
             text-transform: uppercase;
@@ -130,11 +130,13 @@
             </form>
             @endif
             @endauth
+            
             <hr>
+            @if (auth()->user() && auth()->user()->is_revisor)
             <div class="container d-flex-column gap-4 text-center col-md-3">
+                
                 <h5 class="display-6" style="font-size: 30px;">Sezione Revisore</h5>
                 <div class="btn-container">
-                    @if (auth()->user() && auth()->user()->is_revisor)
                     <form action="{{ route('revisor.accept', ['article' => $article->id]) }}" method="POST">
                         @csrf
                         <button class="btn btn-warning">Accetta Articolo</button>
