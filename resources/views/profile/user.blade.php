@@ -1,12 +1,13 @@
 <x-layout>
     <body>
-        <div class="container mt-5 custom-margin-top">
+        <div class="container custom-margin-top">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card shadow-sm">
                         <img src="{{ Storage::url($user->image) }}" class="card-img-top" alt="User Image">
                         <div class="card-body text-center">
                             <h3 class="card-title">{{ $user->name }} {{ $user->surname }}</h3>
+                            <br>
                             <h4 class="card-subtitle text-muted">{{ $user->username }}</h4>
                             <p class="card-text">{{ $user->short_description }}</p>
                         </div>
@@ -54,14 +55,23 @@
             <div class="row text-center">
                 <div class="col-12">
                     <h4 class="display-6">Articoli</h4>
+                    <select id="categorySelect" class="form-select mt-3" onchange="filterArticles()">
+                        <option value="all">Tutte le categorie</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    <div id="noArticlesMessage" class="alert alert-info mt-3" style="display: none;">
+                        Nessun articolo disponibile per questa categoria.
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="container mt-5">
-            <div class="row">
+            <div class="row" id="articlesContainer">
                 @forelse ($user->articles as $article)
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4 article-item" data-category="{{ $article->category_id }}">
                     <div class="card shadow-sm">
                         <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="Article Image">
                         <div class="card-body text-center">
@@ -79,6 +89,29 @@
                 @endforelse
             </div>
         </div>
+
+        <script>
+            function filterArticles() {
+                const selectedCategory = document.getElementById('categorySelect').value;
+                const articles = document.querySelectorAll('.article-item');
+                let articlesFound = false;
+
+                articles.forEach(article => {
+                    if (selectedCategory === 'all' || article.dataset.category === selectedCategory) {
+                        article.style.display = 'block';
+                        articlesFound = true;
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+
+                if (!articlesFound) {
+                    document.getElementById('noArticlesMessage').style.display = 'block';
+                } else {
+                    document.getElementById('noArticlesMessage').style.display = 'none';
+                }
+            }
+        </script>
     </body>
 
     <style>
@@ -90,7 +123,7 @@
         }
 
         .custom-margin-top {
-            margin-top: 140px!important; /* Adjust this value as needed */
+            margin-top: 10px!important; /* Adjust this value as needed */
         }
 
         .card {

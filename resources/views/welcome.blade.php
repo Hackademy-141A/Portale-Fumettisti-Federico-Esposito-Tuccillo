@@ -1,135 +1,230 @@
 <x-layout>
     <style>
-        html, body {
+        /* Reset CSS */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            box-sizing: border-box;
         }
 
-        .text-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            background-image: url('{{ asset('images/test1.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            padding-bottom: 700px;
-            margin-top: 20px;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        /* Global Styles */
+        html,body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+            margin-top: 0px!important;
         }
 
-        .text-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            z-index: 1;
-        }
-
-        .text-container > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .container-fluid1 {
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            border-top: 20px;
-            border-radius: 2px;
-            background-image: url('{{ asset('images/test11.jpg') }}');
-            background-color: #5b5a5a !important;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            font-size: 30px;
-            color: #ffffff;
-        }
-
-        .work-with-us-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            padding: 50px 0;
-            background-color: #222;
-            color: white;
+        /* Header Section */
+        .header {
             text-align: center;
+            padding: 80px 0;
+            /* background-image: url('{{asset('images/test2.jpg')}}'); */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            background-color:#333;
         }
 
-        .work-with-us-container h2 {
+        .header h1 {
+            font-size: 3.5em;
             margin-bottom: 20px;
-            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        .work-with-us-container p {
+        .header p {
             font-size: 1.2em;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .work-with-us-button {
+        .header .btn {
+            font-size: 1.2em;
             padding: 15px 30px;
-            font-size: 1.2em;
-            color: white!important;
-            background-color: #007bff;
             border: none;
             border-radius: 5px;
-            text-decoration: none!important;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
-        .work-with-us-button:hover {
+        .header .btn:hover {
             background-color: #0056b3;
+        }
+
+        /* Latest Comics Section */
+        .latest-comics {
+            padding: 50px 0;
+            background-color: #333;
+        }
+
+        .latest-comics h2 {
+            font-size: 2.5em;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .comic-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .comic-card {
+            width: 300px;
+            margin: 0 15px 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .comic-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .comic-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comic-details {
+            padding: 20px;
+        }
+
+        .comic-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .comic-subtitle {
+            font-size: 1.2em;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .comic-author {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .comic-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 10px 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .comic-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Work With Us Section */
+        .work-with-us {
+            text-align: center;
+            padding: 80px 0;
+            background-color: #222;
+            color: white;
+        }
+
+        .work-with-us h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .work-with-us p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .work-with-us .btn {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .work-with-us .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .comic-card {
+                width: calc(50% - 30px);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .comic-card {
+                width: calc(100% - 30px);
+                margin: 0 0 30px;
+            }
         }
     </style>
 
     <body>
-        @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
+        <!-- Header Section -->
+        <section class="header">
+            <div class="container">
+                <h1>Benvenuti Fumettisti</h1>
+                <p>Esplora il mondo dei fumetti e scopri le ultime novità!</p>
+                <a href="{{ route('article.index', 'article') }}" class="btn">Visualizza tutti i fumetti</a>
+                <a href="{{ route('article.create') }}" class="btn">Aggiungi un nuovo fumetto</a>
             </div>
-        @endif
+        </section>
 
-        <div class="text-container">
-            <h1 class="display-1 mt-5">Benvenuti Fumettisti</h1>
-        </div>
-        
-        <div class="container-fluid1">
-            <div class="row text-center">
-                <div class="col-12">
-                    <h1 style="font-family: electrolize" class="mt-5">Ultimi Fumetti Pubblicati</h1>
-                    <div class="container py-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <h2 class="text-center mt-5 mb-4">Ultimi articoli accettati</h2>
-                            </div>
+        <!-- Latest Comics Section -->
+        <section class="latest-comics">
+            <div class="container">
+                <h2>Ultimi Fumetti Pubblicati</h2>
+                <div class="comic-list">
+                    @foreach($articles as $article)
+                    <div class="comic-card">
+                        <img src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" class="comic-img">
+                        <div class="comic-details">
+                            <h3 class="comic-title">{{ $article->title }}</h3>
+                            <p class="comic-subtitle">{{ $article->subtitle }}</p>
+                            <p class="comic-author">Autore: {{$article->user->username}}</p>
+                            <a href="{{ route('article.show', $article->id) }}" class="comic-btn">Leggi</a>
                         </div>
-                        <div class="row">
-                            @foreach($articles as $article)
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $article->title }}</h5>
-                                        <p class="card-text">{{ $article->subtitle }}</p>
-                                        <p>{{$article->user->username}}</p>
-                                        <a href="{{ route('article.show', $article->id) }}" class="btn btn-primary">Leggi</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div> 
+                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="work-with-us-container">
-            <h2>Anche tu vuoi inserire dei fumetti e iniziare a fare carriera?</h2>
-
-            <a href="{{ route('careers') }}" class="work-with-us-button">Lavora con noi</a>
-        </div>
+        <!-- Work With Us Section -->
+        <section class="work-with-us">
+            <div class="container">
+                <h2>Anche tu vuoi inserire dei fumetti e iniziare a fare carriera?</h2>
+                <p>Unisciti a noi e inizia a pubblicare i tuoi fumetti!</p>
+                <a href="{{ route('careers') }}" class="btn">Lavora con noi</a>
+            </div>
+        </section>
     </body>
 </x-layout>

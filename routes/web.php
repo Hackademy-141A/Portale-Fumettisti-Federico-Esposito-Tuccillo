@@ -12,7 +12,7 @@ Route::post('careers/submit', [PublicController::class, 'carreersSubmit'])->name
 
 Route::prefix('article')->group(function(){
     Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
-        Route::post('/store', [ArticleController::class,'store'])->name('article.store');
+    Route::post('/store', [ArticleController::class,'store'])->name('article.store');
     Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('article.edit');
     Route::put('/{article}/update', [ArticleController::class, 'update'])->name('article.update');
     Route::get('/{article}', [ArticleController::class, 'show'])->name('article.show');
@@ -23,14 +23,14 @@ Route::prefix('article')->group(function(){
 });
 
 Route::prefix('article')->middleware('writer')->group(function(){
-        Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
-        Route::post('/store', [ArticleController::class,'store'])->name('article.store');
+    Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/store', [ArticleController::class,'store'])->name('article.store');
 });
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/index', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::put('/profile/{id}/update', [ProfileController::class, 'update'])->name('profile.update');
-Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
 Route::delete('/profile/{id}/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 Route::get('/profile/utenti', [ProfileController::class, 'fumettisti'])->name('profile.fumettisti');

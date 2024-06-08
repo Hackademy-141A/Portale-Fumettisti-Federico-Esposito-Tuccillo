@@ -2,11 +2,11 @@
     <style>
         body {
             background-color: rgb(52, 112, 146)!important;
-            margin-top: 100px!important;
+            margin-top: 10px!important;
             display: flex!important;
             justify-content: center!important;
             align-items: center!important;
-            height: 100vh!important;
+            height: 80vh!important;
         }
 
         .form-container {

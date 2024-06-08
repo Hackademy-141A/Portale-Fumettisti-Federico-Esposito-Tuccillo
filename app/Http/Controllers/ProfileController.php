@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +31,13 @@ class ProfileController extends Controller
     //* Mostra la pagina di index del profilo dell'utente loggato
     public function index(Request $request)
     {
-        return view('profile.show', ['user' => $request->user()]);
+        
+        $users = User::whereHas('articles')->get();
+        $categories = Category::all();
+        
+        
+        return view('profile.index', ['users' => $users]);
+        
         
         
     }
@@ -40,23 +47,18 @@ class ProfileController extends Controller
     //* Mostra il profilo del singolo utente loggato
     public function show(Request $request)
     {
-        $users = User::whereHas('articles')->get();
-
-
-        return view('profile.index', ['users' => $users]);
-
-        
+        return view('profile.show', ['user' => $request->user()]);
     }
     
     public function user(User $user, $id)
-{
-    // Trova l'articolo con l'autore caricato
-    $user = User::findOrFail($id);
-    
-    
-    // Passa l'utente alla vista
-    return view('profile.user', compact('user'));
-}
+    {
+        // Trova l'articolo con l'autore caricato
+        $user = User::findOrFail($id);
+        
+        
+        // Passa l'utente alla vista
+        return view('profile.user', compact('user'));
+    }
     
     
     
@@ -203,8 +205,8 @@ class ProfileController extends Controller
     
     //!Fumettisti
     
-    // public function fumettisti()
-    // {
-    //     return view('profile.fumettisti');
-    // }
+    public function fumettisti()
+    {
+        return view('profile.fumettisti');
+    }
 }

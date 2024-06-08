@@ -5,8 +5,9 @@
         body {
             
             background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
-            background-size: cover;
-            animation: slidein ss alternate infinite forwards;
+            background-size: fill;
+            background-position:top;
+            animation: slidein s alternate infinite forwards;
         }
         
         @keyframes slidein {

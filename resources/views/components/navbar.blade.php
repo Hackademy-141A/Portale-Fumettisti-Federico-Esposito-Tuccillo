@@ -8,18 +8,19 @@
     <style>
         /* Navbar Styles */
         .centernav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
         .navbar {
             background-color: #6246ff !important;
-            padding: 10px 20px;
+            padding: 10px 40px 16px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             font-family: 'Pacifico', cursive!important;
             font-size: 25px;
             text-shadow: #ffffff 2px 2px 6px;
+            
         }
         
         .navbar-brand {
@@ -95,7 +96,7 @@
                 <ul class="navbar-nav centernav mx-auto">
                     <li class="nav-item">
                         <!-- Placeholder for central links -->
-                        <a class="nav-link nava" href="{{route('profile.fumettisti')}}">Fumettisti</a>
+                        <a class="nav-link nava" href="{{route('profile.index')}}">Fumettisti</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -111,17 +112,19 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{route('profile.edit', Auth::user()->id)}}">Impostazioni</a></li>
                             <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{route('profile.show', 'id')}}">Il Tuo Profilo</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li>
                                 @auth
-                                    @if (Auth::user()->is_admin)
-                                        <a class="dropdown-item" href="{{route('admin.dashboard')}}">Admim Dashboard</a>
-                                    @endif
+                                @if (Auth::user()->is_admin)
+                                <a class="dropdown-item" href="{{route('admin.dashboard')}}">Admim Dashboard</a>
+                                @endif
                                 @endauth
                                 <li><hr class="dropdown-divider"></li>
                                 @auth
-                                    @if (Auth::user()->is_revisor)
-                                    <a class="dropdown-item" href="{{route('revisor.dashboard')}}">Revisor Dashboard</a>
-                                    @endif
+                                @if (Auth::user()->is_revisor)
+                                <a class="dropdown-item" href="{{route('revisor.dashboard')}}">Revisor Dashboard</a>
+                                @endif
                                 @endauth
                                 <li><hr class="dropdown-divider"></li>
                                 <form class="text-center" method="POST" action="{{ route('logout') }}">

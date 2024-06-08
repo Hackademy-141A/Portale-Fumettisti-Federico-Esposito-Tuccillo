@@ -1,5 +1,12 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-info text-center text-white">
+    <style>
+        html, body{
+            margin-top: 10px!important;
+            overflow: hidden;
+        }
+        
+    </style>
+    <div class="container-fluidd p-5 bg-info text-center text-white">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Lavora Con Noi
