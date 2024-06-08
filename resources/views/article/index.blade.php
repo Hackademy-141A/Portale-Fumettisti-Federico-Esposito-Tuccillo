@@ -3,11 +3,13 @@
         @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
         
         body {
-            
+            margin: 0;
+            padding: 0;
             background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
-            background-size: fill;
-            background-position:top;
+            background-size: cover;
+            background-position: top;
             animation: slidein s alternate infinite forwards;
+            padding-top:  0;/* Adjust the padding-top instead of margin-top */
         }
         
         @keyframes slidein {
@@ -19,16 +21,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: absolute;
-            margin: auto;
-            top: 0;
-            right: 0;
-            bottom: 0;
+            /* position: absolute; Remove absolute positioning */
+            margin: auto; 
+            top: 0; 
+            right: 0; 
+            bottom: 0; 
             left: 0;
-            background: rgba(75, 75, 250, 0.3);
+            /* background: rgba(75, 75, 250, 0.3); */
             border-radius: 3px;
             padding: 2px;
             box-sizing: border-box;
+            margin-bottom: 0px; /* Add some bottom margin for spacing */
         }
         
         .center h1 {
@@ -73,7 +76,7 @@
     <body>
         
         <div class="center">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row text-center">
                     <div class="col-12">
                         <h1>Tutti i nostri articoli</h1>
@@ -110,5 +113,4 @@
             </div>
         </div>
     </body>
-    </x-layout>
-    
+</x-layout>

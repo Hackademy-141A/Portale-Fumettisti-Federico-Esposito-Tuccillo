@@ -21,7 +21,7 @@ class PublicController extends Controller
         // Fetch the latest accepted articles
         $articles = Article::where('is_accepted', true)
                             ->orderBy('created_at', 'desc')
-                            ->take(4)
+                            ->take(3)
                             ->get();
         return view('welcome', compact('articles'));
     }
